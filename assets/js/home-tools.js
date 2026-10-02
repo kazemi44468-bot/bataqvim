@@ -35,7 +35,7 @@ async function prayer(){
   try{
     const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw new Error("HTTP "+r.status);
     const j=await r.json(),t=j&&j.data&&j.data.timings;if(!t)throw new Error("No timings");
-    const d=$("#prayerDate");if(d)d.textContent=fa(day+"/"+month+"/"+year);
+    const d=$("#prayerDate");if(d){const jj=g2j(year,n.getMonth()+1,n.getDate());d.textContent=fa(jj[0]+"/"+String(jj[1]).padStart(2,"0")+"/"+String(jj[2]).padStart(2,"0"))+" · امروز";}
     const items=[["اذان صبح",t.Fajr],["طلوع آفتاب",t.Sunrise],["اذان ظهر",t.Dhuhr],["اذان عصر",t.Asr],["غروب آفتاب",t.Sunset],["اذان مغرب",t.Maghrib],["عشاء",t.Isha],["نیمه‌شب",t.Midnight]];
     box.innerHTML=items.map(x=>"<div><span>"+x[0]+"</span><b>"+fa(String(x[1]||"—").replace(/[^0-9:]/g,""))+"</b></div>").join("");
   }catch(e){box.innerHTML='<div class="prayer-loading">اتصال به سرویس اوقات شرعی برقرار نشد.</div>'}
@@ -43,7 +43,7 @@ async function prayer(){
 function worldClocks(){
   const city=$("#worldClockCity"),time=$("#worldClockTime");
   if(!city||!time)return;
-  const zones={Tehran:"Asia/Tehran",Baku:"Asia/Baku",Baghdad:"Asia/Baghdad",Riyadh:"Asia/Riyadh",Dubai:"Asia/Dubai",Delhi:"Asia/Kolkata",Tokyo:"Asia/Tokyo",Beijing:"Asia/Shanghai",Seoul:"Asia/Seoul",Ankara:"Europe/Istanbul",Moscow:"Europe/Moscow",London:"Europe/London",Paris:"Europe/Paris",Berlin:"Europe/Berlin",Rome:"Europe/Rome",Madrid:"Europe/Madrid",Washington:"America/New_York",Ottawa:"America/Toronto",MexicoCity:"America/Mexico_City",Brasilia:"America/Sao_Paulo",Canberra:"Australia/Sydney"};
+  const zones={Tehran:"Asia/Tehran",Baku:"Asia/Baku",Baghdad:"Asia/Baghdad",Riyadh:"Asia/Riyadh",Dubai:"Asia/Dubai",Delhi:"Asia/Kolkata",Tokyo:"Asia/Tokyo",Beijing:"Asia/Shanghai",Seoul:"Asia/Seoul",Istanbul:"Europe/Istanbul",Moscow:"Europe/Moscow",London:"Europe/London",Paris:"Europe/Paris",Berlin:"Europe/Berlin",Rome:"Europe/Rome",Madrid:"Europe/Madrid",NewYork:"America/New_York",Ottawa:"America/Toronto",MexicoCity:"America/Mexico_City",Brasilia:"America/Sao_Paulo",Canberra:"Australia/Sydney"};
   const update=()=>{
     try{
       const zone=zones[city.value]||city.value;
