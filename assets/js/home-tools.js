@@ -43,8 +43,18 @@ async function prayer(){
 function worldClocks(){
   const city=$("#worldClockCity"),time=$("#worldClockTime");
   if(!city||!time)return;
-  const update=()=>{try{time.textContent=new Intl.DateTimeFormat("fa-IR",{timeZone:city.value,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(new Date())}catch(e){time.textContent="—"}};
-  city.addEventListener("change",update);update();setInterval(update,1000);
+  const zones={Tehran:"Asia/Tehran",Baku:"Asia/Baku",Baghdad:"Asia/Baghdad",Riyadh:"Asia/Riyadh",Dubai:"Asia/Dubai",Delhi:"Asia/Kolkata",Tokyo:"Asia/Tokyo",Beijing:"Asia/Shanghai",Seoul:"Asia/Seoul",Ankara:"Europe/Istanbul",Moscow:"Europe/Moscow",London:"Europe/London",Paris:"Europe/Paris",Berlin:"Europe/Berlin",Rome:"Europe/Rome",Madrid:"Europe/Madrid",Washington:"America/New_York",Ottawa:"America/Toronto",MexicoCity:"America/Mexico_City",Brasilia:"America/Sao_Paulo",Canberra:"Australia/Sydney"};
+  const update=()=>{
+    try{
+      const zone=zones[city.value]||city.value;
+      const parts=new Intl.DateTimeFormat("en-GB",{timeZone:zone,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).formatToParts(new Date());
+      const get=k=>parts.find(p=>p.type===k)?.value||"00";
+      time.textContent=fa(get("hour")+":"+get("minute")+":"+get("second"));
+    }catch(e){time.textContent="—"}
+  };
+  city.addEventListener("change",update);
+  update();
+  setInterval(update,1000);
 }
 function loadEvents(){
   let ev=[].concat(window.OFFICIAL_EVENTS_1404||[],window.OFFICIAL_EVENTS_1405||[],window.OFFICIAL_EVENTS_1406||[]);
