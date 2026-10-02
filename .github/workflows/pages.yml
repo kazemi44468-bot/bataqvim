@@ -21,14 +21,15 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: دریافت مخزن
         uses: actions/checkout@v4
-
       - name: تنظیم GitHub Pages
         uses: actions/configure-pages@v5
-
+      - name: آماده‌سازی فایل‌های سایت
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
       - name: انتشار
         id: deployment
         uses: actions/deploy-pages@v4
