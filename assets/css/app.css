@@ -17,3 +17,166 @@ a{text-decoration:none;color:inherit}button,input,select,textarea{font-family:in
 .event-dot.international{background:#e5edf0;border-color:#9bb6c1}
 .event-dot.iranian{background:#e9efe7;border-color:#a9bea5}
 .event-dot.special{background:#f0eee7;border-color:#b8b39f}
+
+
+/* IRANIAN MODERN REDESIGN */
+:root{
+  --ink:#173c3b;
+  --ink2:#245654;
+  --turq:#159a98;
+  --turq-dark:#0d706f;
+  --turq-soft:#e8f5f2;
+  --lapis:#234b73;
+  --lapis-soft:#edf3f8;
+  --gold:#b89552;
+  --gold-soft:#f4ecd9;
+  --paper:#fcfbf7;
+  --line:#d9e3df;
+  --muted:#647471;
+}
+body{
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 15% 10%,rgba(21,154,152,.055) 0 2px,transparent 2.5px),
+    radial-gradient(circle at 85% 70%,rgba(35,75,115,.04) 0 2px,transparent 2.5px),
+    linear-gradient(135deg,#fbfcf9,#f2f7f5);
+  background-size:34px 34px,46px 46px,auto;
+}
+body:after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.11;
+  background:
+    radial-gradient(ellipse at 50% 18%,transparent 0 14%,rgba(21,154,152,.16) 14.2% 14.5%,transparent 14.7%),
+    radial-gradient(ellipse at 50% 18%,transparent 0 20%,rgba(184,149,82,.12) 20.2% 20.4%,transparent 20.6%);
+  mask-image:linear-gradient(to bottom,transparent,#000 15%,#000 80%,transparent);
+}
+.topbar{
+  min-height:84px;padding:12px 5%;
+  background:rgba(252,253,250,.94);
+  border-bottom:1px solid #d8e4e0;
+  box-shadow:0 8px 28px rgba(21,72,68,.07);
+}
+.brand-logo{
+  width:52px;height:52px;border-radius:16px;padding:6px;
+  background:linear-gradient(145deg,#fff,#e8f4f1);
+  border:1px solid #b9d8d2;
+  box-shadow:0 7px 20px rgba(20,103,99,.12);
+}
+.brand b{font-size:17px}.brand small{font-size:10px;color:#647b78}
+.topbar nav{
+  border-color:#cfe0dc;background:#f7fbfa;border-radius:14px;
+}
+.topbar nav a{font-size:12px;padding:8px 13px;color:#3e5c59}
+.topbar nav a:hover{background:var(--turq-soft);color:var(--turq-dark)}
+.today,.add-btn,.outline,.toolbar-actions button,.views button,.side-head button{
+  border-color:#c9dbd7;border-radius:11px;min-height:42px;font-size:12px;
+}
+.today:hover,.outline:hover,.toolbar-actions button:hover,.views button:hover{
+  border-color:#72b9b2;color:var(--turq-dark);
+}
+.add-btn,.save{
+  background:linear-gradient(135deg,var(--turq-dark),var(--turq));
+  border-color:var(--turq-dark);
+}
+.calendar-shell{padding-top:52px}
+.eyebrow{font-size:9px;letter-spacing:2.4px;color:var(--turq-dark)}
+.title-area h1{font-size:38px;color:var(--ink)}
+.title-area p{font-size:14px;color:#657572}
+.calligraphy{
+  font-family:ShekastehLocal,VazirmatnLocal,sans-serif;
+  font-size:1em;
+  line-height:1.7;
+}
+.calendar-main,.side-panel{
+  background:rgba(255,255,253,.96);
+  border-color:#d5e2de;border-radius:22px;
+  box-shadow:0 18px 48px rgba(28,69,66,.08);
+}
+.calendar-main:before,.side-panel:before{display:none}
+.calendar-main{padding:22px}
+.side-panel{padding:20px}
+.month-title button{font-size:21px}
+.views{border-color:#cfe0dc;background:#f3f8f6}
+.views button{font-size:12px}
+.views button.active{background:var(--turq-dark);box-shadow:0 5px 14px rgba(13,112,111,.2)}
+.month-grid{border-color:#d9e3df}
+.dow,.day-cell{border-color:#d9e3df}
+.dow{
+  padding:10px 2px;font-size:11px;color:#53706c;
+  background:linear-gradient(#f7fbfa,#edf5f2);
+}
+.day-cell{min-height:112px;padding:9px;background:#fff}
+.day-cell:hover{background:#f2faf8}
+.day-cell.selected{outline:2px solid #62b9b0;background:#f2fbf9}
+.day-cell.today{box-shadow:inset 0 3px 0 var(--turq)}
+.num{font-size:14px}
+.event-dot{
+  font-size:10px;padding:4px 7px;margin-top:6px;border-radius:7px;
+}
+.event-dot.personal{background:#e9f5ef;color:#285f4f;border-color:#cfe7dc}
+.event-dot.public{background:#f5f0e3;color:#786037;border-color:#e7dbc0}
+.event-dot.project{background:#eaf2f8;color:#365b76;border-color:#d1e1ed}
+.event-dot.national,.event-dot.historical{background:#f5efe1;border-color:#dcc99e;color:#735c2f}
+.event-dot.religious{background:#f0edf7;border-color:#d5cce7;color:#5e5279}
+.event-dot.international{background:#e9f2f5;border-color:#c8dce2;color:#41636d}
+.event-dot.iranian{background:#e7f4f1;border-color:#c5e2dc;color:#286d68}
+.event-dot.special{background:#eef3f1;border-color:#d3e0dc;color:#47635e}
+.week-col,.year-month{border-color:#d9e3df;background:#fff}
+.week-col h3,.year-month h3{font-size:13px}
+.side-head{padding-bottom:14px;border-color:#d9e3df}
+.side-head small{font-size:10px}.side-head h2{font-size:18px}
+.side-head button{background:var(--turq-dark)}
+.event-item{border-color:#d9e3df;border-right:3px solid var(--turq);padding:11px}
+.event-item b{font-size:12px}.event-item small{font-size:10px}
+.mini-block{border-color:#d9e3df;font-size:12px}
+.mini-block label{font-size:12px}
+.source-note{font-size:12px!important}
+.quick-stats{
+  border-color:#d7e3df;background:rgba(252,253,250,.92);
+  box-shadow:0 12px 32px rgba(28,69,66,.06);
+}
+.quick-stats b{font-size:20px;color:var(--turq-dark)}
+.quick-stats span{font-size:12px}
+.section{padding:82px 5%}
+.section-title{margin-bottom:32px}
+.section-title>span{color:var(--turq);font-size:12px}
+.section-title small{font-size:11px;color:#71817e}
+.section-title h2{font-size:29px}
+.year-info{gap:16px}
+.year-info div{
+  background:rgba(255,255,253,.96);border-color:#d7e3df;
+  padding:25px;border-radius:16px;
+}
+.year-info div:after{
+  width:120px;height:120px;border:1px solid rgba(21,154,152,.28);
+  transform:none;left:auto;right:-60px;bottom:-60px;border-radius:50%;
+}
+.year-info b{font-size:15px}.year-info p{font-size:13px;line-height:2}
+.project-card{
+  background:linear-gradient(145deg,#e8f5f2,#eef5f7);
+  border-color:#c9e0db;padding:35px;border-radius:18px;
+}
+.project-card:after{
+  width:220px;height:220px;right:-90px;bottom:-100px;
+  border:1px solid rgba(21,154,152,.22);border-radius:50%;
+}
+.project-card>span{font-size:9px;letter-spacing:2px;color:var(--turq-dark)}
+.project-card h3{font-size:28px}.project-card p{font-size:13px;line-height:2}
+.chips i{font-size:10px;border-color:#b9d5d0;background:#ffffff99}
+.project-list{border-color:#d7e3df;background:#fff}
+.project-list div{padding:18px;font-size:13px;border-color:#dce6e3}
+.project-list b{color:var(--turq-dark)}
+footer{font-size:11px;background:#f4f9f7;border-color:#d7e3df}
+.modal-card{border-color:#d5e2de}
+.modal-card h2{font-size:22px}
+.modal-card label{font-size:12px}
+.modal-card input,.modal-card select,.modal-card textarea{font-size:13px;padding:10px}
+@media(max-width:600px){
+  .brand b{font-size:15px}.title-area h1{font-size:32px}.title-area p{font-size:12px}
+  .month-title button{font-size:18px}.dow{font-size:9px}.day-cell{min-height:82px}
+  .num{font-size:13px}.event-dot{font-size:8px}
+  .section-title h2{font-size:25px}.project-card h3{font-size:24px}
+}
+@media(max-width:390px){
+  .title-area h1{font-size:29px}.day-cell{min-height:64px}
+}
