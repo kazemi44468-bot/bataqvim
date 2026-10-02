@@ -11,6 +11,14 @@
 <div class="top-actions"><button id="todayBtn" class="today" type="button">امروز</button><button id="addTop" class="add-btn" type="button">＋ رویداد</button></div>
 </header>
 <main>
+<section class="today-dashboard">
+<div class="today-date-panel">
+<div class="today-panel-head"><span>امروز</span><select id="prayerCity" aria-label="شهر اوقات شرعی"><option value="Tehran">تهران</option><option value="Mashhad">مشهد</option><option value="Qom">قم</option><option value="Isfahan">اصفهان</option><option value="Shiraz">شیراز</option><option value="Tabriz">تبریز</option></select></div>
+<div class="today-dates"><div><small>شمسی</small><b id="todayJalali">—</b><span id="todayWeekday">—</span></div><div><small>میلادی</small><b id="todayGregorian">—</b></div><div><small>قمری</small><b id="todayLunar">—</b></div></div>
+<div class="clock-row"><div class="analog-clock" id="analogClock" aria-label="ساعت عقربه‌ای"><i class="clock-hand hour"></i><i class="clock-hand minute"></i><i class="clock-hand second"></i><b class="clock-center"></b><span class="tick t1"></span><span class="tick t2"></span><span class="tick t3"></span><span class="tick t4"></span></div><div class="digital-clock"><small>ساعت</small><strong id="liveClock">—</strong><span id="todayEvents">—</span></div></div></div>
+<div class="prayer-panel"><div class="today-panel-head"><span>اوقات شرعی</span><small id="prayerDate">—</small></div><div id="prayerTimes" class="prayer-grid"><div class="prayer-loading">در حال دریافت اوقات امروز…</div></div><small class="prayer-source">اوقات شرعی بر اساس شهر انتخاب‌شده و محاسبه سرویس زمان نماز نمایش داده می‌شود.</small></div>
+</section>
+
 <section class="calendar-shell" id="calendar">
 <div class="calendar-toolbar"><div class="title-area"><span class="eyebrow">CALENDAR · EVENTS · PLANNING</span><h1 class="calligraphy">تقویم و سالنامه</h1></div><div class="toolbar-actions"><button id="prevBtn" type="button" aria-label="ماه قبل">‹</button><button id="nextBtn" type="button" aria-label="ماه بعد">›</button><button id="todayBtn2" class="outline" type="button">امروز</button></div></div>
 <div class="calendar-layout"><section class="calendar-main"><div class="viewbar"><div class="month-title"><button id="monthPicker" type="button"></button></div><div class="views" role="tablist"><button class="view active" data-view="month" type="button">ماه</button><button class="view" data-view="week" type="button">هفته</button><button class="view" data-view="year" type="button">سال</button></div></div>
@@ -20,15 +28,7 @@
 <div class="mini-block"><b>نمایش رویدادها</b><label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label><label><input type="checkbox" checked data-filter="national"> ملی</label><label><input type="checkbox" checked data-filter="religious"> مذهبی</label><label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label><label><input type="checkbox" checked data-filter="historical"> تاریخی</label><label><input type="checkbox" checked data-filter="international"> بین‌المللی</label><label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label></div></aside></div>
 </section>
 
-<section class="today-dashboard">
-<div class="today-date-panel">
-<div class="today-panel-head"><span>امروز</span><select id="prayerCity" aria-label="شهر اوقات شرعی"><option value="Tehran">تهران</option><option value="Mashhad">مشهد</option><option value="Qom">قم</option><option value="Isfahan">اصفهان</option><option value="Shiraz">شیراز</option><option value="Tabriz">تبریز</option></select></div>
-<div class="today-dates"><div><small>شمسی</small><b id="todayJalali">—</b><span id="todayWeekday">—</span></div><div><small>میلادی</small><b id="todayGregorian">—</b></div><div><small>قمری</small><b id="todayLunar">—</b></div></div>
-<div class="clock-row"><div class="analog-clock" id="analogClock" aria-label="ساعت عقربه‌ای"><i class="clock-hand hour"></i><i class="clock-hand minute"></i><i class="clock-hand second"></i><b class="clock-center"></b><span class="tick t1"></span><span class="tick t2"></span><span class="tick t3"></span><span class="tick t4"></span></div><div class="digital-clock"><small>ساعت</small><strong id="liveClock">—</strong><span id="todayEvents">—</span></div></div></div>
-<div class="prayer-panel"><div class="today-panel-head"><span>اوقات شرعی</span><small id="prayerDate">—</small></div><div id="prayerTimes" class="prayer-grid"><div class="prayer-loading">در حال دریافت اوقات امروز…</div></div><small class="prayer-source">اوقات شرعی بر اساس شهر انتخاب‌شده و محاسبه سرویس زمان نماز نمایش داده می‌شود.</small></div>
-</section>
-
-<section class="workspace-strip"><div class="workspace-title"><span>فضای شخصی</span><h2>یادداشت، تقویم شخصی و پروژه</h2></div><div class="workspace-links"><a href="notes.html"><b>دفترچه یادداشت</b><span>یادداشت‌های شخصی و موضوعی</span><i>←</i></a><a href="projects.html"><b>مدیریت پروژه</b><span>موضوع، زمان‌بندی و نقاط عطف</span><i>←</i></a><a href="events.html"><b>سالنامه و رویدادها</b><span>آرشیو و مناسبت‌های هر روز</span><i>←</i></a></div></section>
+<div class="workspace-title"><span>فضای شخصی</span><h2>یادداشت، تقویم شخصی و پروژه</h2></div><div class="workspace-links"><a href="notes.html"><b>دفترچه یادداشت</b><span>یادداشت‌های شخصی و موضوعی</span><i>←</i></a><a href="projects.html"><b>مدیریت پروژه</b><span>موضوع، زمان‌بندی و نقاط عطف</span><i>←</i></a><a href="events.html"><b>سالنامه و رویدادها</b><span>آرشیو و مناسبت‌های هر روز</span><i>←</i></a></div></section>
 
 <section class="month-agenda section"><div class="section-title"><span>این ماه</span><div><small>مرور سریع</small><h2>مناسبت‌ها و رویدادهای ماه</h2></div></div><div id="monthAgendaList" class="month-agenda-list"></div></section>
 <section class="quick-stats" id="agenda"><div><b id="eventCount">۰</b><span>رویداد</span></div><div><b>۳</b><span>گاه‌شماری روز</span></div><div><b>دفتر</b><span>یادداشت شخصی</span></div><div><b>پروژه</b><span>زمان‌بندی اختصاصی</span></div></section>
