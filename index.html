@@ -26,7 +26,7 @@
     <aside class="side-panel">
       <div class="side-head"><div><small>انتخاب‌شده</small><h2 id="selectedTitle">امروز</h2></div><button id="addSide" type="button">＋</button></div>
       <div id="dayEvents" class="event-list"></div>
-      <div class="mini-block"><b>تقویم‌ها</b><label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label></div>
+      <div class="mini-block"><b>دسته‌بندی رویدادها</b><label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label><label><input type="checkbox" checked data-filter="national"> ملی</label><label><input type="checkbox" checked data-filter="religious"> مذهبی</label><label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label><label><input type="checkbox" checked data-filter="historical"> تاریخی</label><label><input type="checkbox" checked data-filter="international"> بین‌المللی</label><label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label><small class="source-note">بانک مناسبت‌های ۱۴۰۵ با تکیه بر تقویم رسمی ایران و تطبیق با منابع سازمان ملل و یونسکو گردآوری شده است.</small></div>
     </aside>
   </div>
 </section>
@@ -36,5 +36,5 @@
 </main>
 <footer><span>بستر تقویم و رویداد</span><a href="doc/">مستندات معماری</a></footer>
 <div class="modal" id="eventModal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="closeModal" type="button">×</button><h2 id="modalTitle">ثبت رویداد</h2><form id="eventForm"><label>عنوان رویداد<input id="eventTitle" required maxlength="80" placeholder="مثلاً جلسه پروژه"></label><label>تاریخ<input id="eventDate" required type="text" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label><label>نوع<select id="eventType"><option value="personal">شخصی</option><option value="public">عمومی</option><option value="project">پروژه</option></select></label><label>زمان<input id="eventTime" type="time"></label><label>توضیح<textarea id="eventNote" rows="3" maxlength="180" placeholder="توضیح کوتاه"></textarea></label><button class="save" type="submit">ذخیره رویداد</button></form></div></div>
-<script src="assets/js/app.js"></script>
+<script src="assets/data/events-1405.js"></script><script src="assets/js/app.js"></script>
 </body></html>
