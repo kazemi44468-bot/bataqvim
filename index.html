@@ -1,84 +1,39 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>تقویم | بستر تقویم و رویداد</title>
-<meta name="description" content="تقویم و سالنامه هوشمند برای رویداد، برنامه‌ریزی و زمان‌بندی."><meta name="theme-color" content="#172a28"><link rel="icon" href="assets/images/logo.png" type="image/png">
-<link rel="stylesheet" href="assets/css/app.css">
-</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تقویم | تقویم، رویداد و زمان‌بندی</title>
+<meta name="description" content="تقویم روزانه، رویدادها، یادداشت‌ها و برنامه‌ریزی پروژه‌ها.">
+<meta name="theme-color" content="#147f79"><link rel="icon" href="assets/images/logo.png" type="image/png"><link rel="stylesheet" href="assets/css/app.css"></head>
 <body>
 <header class="topbar">
-  <a class="brand" href="./"><span class="brand-logo"><img src="assets/images/logo.png" alt="لوگوی تقویم"></span><span><b>تقویم</b><small>بستر تقویم و رویداد</small></span></a>
-  <nav><a href="index.html">نخست</a><a href="about.html">معرفی</a><a href="contact.html">تماس</a><a href="events.html">رویدادها</a><a href="tools.html">ابزارها</a><a href="login.html">ورود</a></nav>
-  <div class="top-actions"><button id="todayBtn" class="today" type="button">امروز</button><button id="addTop" class="add-btn" type="button">＋ رویداد</button></div>
+<a class="brand" href="index.html"><span class="brand-logo"><img src="assets/images/logo.png" alt="لوگوی تقویم"></span><span><b>تقویم</b><small>بستر تقویم و رویداد</small></span></a>
+<nav><a href="index.html">نخست</a><a href="about.html">معرفی</a><a href="contact.html">تماس</a><a href="events.html">رویدادها</a><a href="notes.html">یادداشت‌ها</a><a href="projects.html">پروژه‌ها</a><a href="tools.html">ابزارها</a><a href="login.html">ورود</a></nav>
+<div class="top-actions"><button id="todayBtn" class="today" type="button">امروز</button><button id="addTop" class="add-btn" type="button">＋ رویداد</button></div>
 </header>
 <main>
 <section class="calendar-shell" id="calendar">
-  <div class="calendar-toolbar">
-    <div class="title-area"><span class="eyebrow">CALENDAR · EVENTS · PLANNING</span><h1 class="calligraphy">تقویم و سالنامه</h1><p>زمان را ببینید، برنامه‌ریزی کنید و رویدادهای خود را در یک فضای واحد مدیریت کنید.</p></div>
-    <div class="toolbar-actions"><button id="prevBtn" type="button" aria-label="ماه قبل">‹</button><button id="nextBtn" type="button" aria-label="ماه بعد">›</button><button id="todayBtn2" class="outline" type="button">امروز</button></div>
-  </div>
-  <div class="calendar-layout">
-    <section class="calendar-main">
-      <div class="viewbar"><div class="month-title"><button id="monthPicker" type="button"></button></div><div class="views" role="tablist"><button class="view active" data-view="month" type="button">ماه</button><button class="view" data-view="week" type="button">هفته</button><button class="view" data-view="year" type="button">سال</button></div></div>
-      <div class="date-selector" aria-label="انتخاب تاریخ">
-        <label>سال<select id="yearSelect"></select></label>
-        <label>ماه<select id="monthSelect"></select></label>
-        <label>روز<select id="daySelect"></select></label>
-        <button id="openDayBtn" class="date-open" type="button">مشاهده روز</button>
-      </div>
-      <div id="calendarView" aria-live="polite"></div>
-    </section>
-    <aside class="side-panel">
-      <div class="side-head"><div><small>انتخاب‌شده</small><h2 id="selectedTitle">امروز</h2></div><button id="addSide" type="button">＋</button></div>
-      <div id="dayEvents" class="event-list"></div>
-      <div class="mini-block"><b>دسته‌بندی رویدادها</b><label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label><label><input type="checkbox" checked data-filter="national"> ملی</label><label><input type="checkbox" checked data-filter="religious"> مذهبی</label><label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label><label><input type="checkbox" checked data-filter="historical"> تاریخی</label><label><input type="checkbox" checked data-filter="international"> بین‌المللی</label><label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label><small class="source-note">بانک مناسبت‌های ۱۴۰۵ با تکیه بر تقویم رسمی ایران و تطبیق با منابع سازمان ملل و یونسکو گردآوری شده است.</small></div>
-    </aside>
-  </div>
+<div class="calendar-toolbar"><div class="title-area"><span class="eyebrow">CALENDAR · EVENTS · PLANNING</span><h1 class="calligraphy">تقویم و سالنامه</h1></div><div class="toolbar-actions"><button id="prevBtn" type="button" aria-label="ماه قبل">‹</button><button id="nextBtn" type="button" aria-label="ماه بعد">›</button><button id="todayBtn2" class="outline" type="button">امروز</button></div></div>
+<div class="calendar-layout"><section class="calendar-main"><div class="viewbar"><div class="month-title"><button id="monthPicker" type="button"></button></div><div class="views" role="tablist"><button class="view active" data-view="month" type="button">ماه</button><button class="view" data-view="week" type="button">هفته</button><button class="view" data-view="year" type="button">سال</button></div></div>
+<div class="date-selector" aria-label="انتخاب تاریخ"><label>سال<select id="yearSelect"></select></label><label>ماه<select id="monthSelect"></select></label><label>روز<select id="daySelect"></select></label><button id="openDayBtn" class="date-open" type="button">مشاهده روز</button></div>
+<div id="calendarView" aria-live="polite"></div></section>
+<aside class="side-panel"><div class="side-head"><div><small>انتخاب‌شده</small><h2 id="selectedTitle">امروز</h2></div><button id="addSide" type="button">＋</button></div><div id="dayEvents" class="event-list"></div>
+<div class="mini-block"><b>نمایش رویدادها</b><label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label><label><input type="checkbox" checked data-filter="national"> ملی</label><label><input type="checkbox" checked data-filter="religious"> مذهبی</label><label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label><label><input type="checkbox" checked data-filter="historical"> تاریخی</label><label><input type="checkbox" checked data-filter="international"> بین‌المللی</label><label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label></div></aside></div>
 </section>
 
-<section class="utility-strip" aria-label="ابزارهای تقویم">
-  <article class="today-card">
-    <div class="utility-kicker">امروز</div>
-    <div class="today-main"><strong id="todayJalali">—</strong><span id="todayWeekday">—</span></div>
-    <div class="today-secondary"><span id="todayGregorian">—</span><span id="todayLunar">—</span><span id="liveClock">—</span></div>
-    <div id="todayEvents" class="today-events"></div>
-  </article>
-  <article class="converter-card">
-    <div class="utility-kicker">تبدیل تاریخ</div>
-    <div class="converter-tabs" role="tablist">
-      <button type="button" class="converter-tab active" data-convert="j2g">شمسی ← میلادی</button>
-      <button type="button" class="converter-tab" data-convert="g2j">میلادی ← شمسی</button>
-    </div>
-    <div class="converter-form">
-      <label id="convertJalaliLabel">تاریخ شمسی<input id="convertJalali" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label>
-      <label id="convertGregorianLabel" hidden>تاریخ میلادی<input id="convertGregorian" inputmode="numeric" placeholder="۲۰۲۶/۱۰/۰۲"></label>
-      <button id="convertBtn" type="button">تبدیل</button>
-    </div>
-    <div id="convertResult" class="convert-result" aria-live="polite">تاریخ معادل را اینجا ببینید.</div>
-  </article>
-  <article class="quick-tools-card">
-    <div class="utility-kicker">دسترسی سریع</div>
-    <a href="events.html">آرشیو همه رویدادها <span>←</span></a>
-    <a href="day.html">صفحه یک روز <span>←</span></a>
-    <button type="button" id="printCalendar">چاپ تقویم <span>↗</span></button>
-  </article>
+<section class="today-dashboard">
+<div class="today-date-panel">
+<div class="today-panel-head"><span>امروز</span><select id="prayerCity" aria-label="شهر اوقات شرعی"><option value="Tehran">تهران</option><option value="Mashhad">مشهد</option><option value="Qom">قم</option><option value="Isfahan">اصفهان</option><option value="Shiraz">شیراز</option><option value="Tabriz">تبریز</option></select></div>
+<div class="today-dates"><div><small>شمسی</small><b id="todayJalali">—</b><span id="todayWeekday">—</span></div><div><small>میلادی</small><b id="todayGregorian">—</b></div><div><small>قمری</small><b id="todayLunar">—</b></div></div>
+<div class="clock-row"><div class="analog-clock" id="analogClock" aria-label="ساعت عقربه‌ای"><i class="clock-hand hour"></i><i class="clock-hand minute"></i><i class="clock-hand second"></i><b class="clock-center"></b><span class="tick t1"></span><span class="tick t2"></span><span class="tick t3"></span><span class="tick t4"></span></div><div class="digital-clock"><small>ساعت</small><strong id="liveClock">—</strong><span id="todayEvents">—</span></div></div></div>
+<div class="prayer-panel"><div class="today-panel-head"><span>اوقات شرعی</span><small id="prayerDate">—</small></div><div id="prayerTimes" class="prayer-grid"><div class="prayer-loading">در حال دریافت اوقات امروز…</div></div><small class="prayer-source">اوقات شرعی بر اساس شهر انتخاب‌شده و محاسبه سرویس زمان نماز نمایش داده می‌شود.</small></div>
 </section>
 
-<section class="month-agenda section">
-  <div class="section-title"><span>رویدادهای ماه</span><div><small>نمای سریع</small><h2>مناسبت‌های این ماه</h2></div></div>
-  <div id="monthAgendaList" class="month-agenda-list"></div>
-</section>
+<section class="workspace-strip"><div class="workspace-title"><span>فضای شخصی</span><h2>یادداشت، تقویم شخصی و پروژه</h2></div><div class="workspace-links"><a href="notes.html"><b>دفترچه یادداشت</b><span>یادداشت‌های شخصی و موضوعی</span><i>←</i></a><a href="projects.html"><b>مدیریت پروژه</b><span>موضوع، زمان‌بندی و نقاط عطف</span><i>←</i></a><a href="events.html"><b>سالنامه و رویدادها</b><span>آرشیو و مناسبت‌های هر روز</span><i>←</i></a></div></section>
 
-<section class="day-page" id="dayPage" hidden>
-  <div class="day-page-head"><div><span class="eyebrow">DAILY PAGE</span><h2 id="dayPageTitle">صفحه روز</h2><p id="dayPageMeta"></p></div><button id="backCalendar" class="outline" type="button">بازگشت به تقویم</button></div>
-  <div class="day-page-grid"><article class="day-main-card"><div class="day-symbol">روز</div><div id="dayPageEvents"></div></article><aside class="day-info-card"><b>رویداد جدید</b><p>برای این روز رویداد، جلسه، یادآوری یا نقطه عطف ثبت کنید.</p><button id="dayAddBtn" class="add-btn" type="button">＋ افزودن رویداد</button></aside></div>
-</section>
-
-<section class="quick-stats" id="agenda"><div><b id="eventCount">۰</b><span>رویداد ثبت‌شده</span></div><div><b>۳</b><span>تقویم فعال نمونه</span></div><div><b>شمسی</b><span>تقویم پایه</span></div><div><b>روز · هفته · ماه · سال</b><span>نماهای تقویم</span></div></section>
-<section class="section platform-note"><div class="section-title"><span>بستر</span><div><small>تقویم شخصی و پروژه‌ای</small><h2>یک تقویم، برای هر نوع برنامه</h2></div></div><div class="platform-note-grid"><div><b>تقویم شخصی</b><p>رویدادها، یادآوری‌ها و برنامه‌های روزمره.</p></div><div><b>تقویم پروژه</b><p>جلسات، مهلت‌ها، نقاط عطف و زمان‌بندی اجرا.</p></div><div><b>تقویم اختصاصی</b><p>تقویم سازمانی، آموزشی، فرهنگی و محصولات تخصصی مانند تقویم شهدا.</p></div></div></section>
+<section class="month-agenda section"><div class="section-title"><span>این ماه</span><div><small>مرور سریع</small><h2>مناسبت‌ها و رویدادهای ماه</h2></div></div><div id="monthAgendaList" class="month-agenda-list"></div></section>
+<section class="quick-stats" id="agenda"><div><b id="eventCount">۰</b><span>رویداد</span></div><div><b>۳</b><span>گاه‌شماری روز</span></div><div><b>دفتر</b><span>یادداشت شخصی</span></div><div><b>پروژه</b><span>زمان‌بندی اختصاصی</span></div></section>
 </main>
-<footer><span>بستر تقویم و رویداد</span><a href="doc/">مستندات معماری</a></footer>
+<footer><span>بستر تقویم و رویداد</span><a href="doc/">مستندات</a></footer>
 <div class="modal" id="eventModal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="closeModal" type="button">×</button><h2 id="modalTitle">ثبت رویداد</h2><form id="eventForm"><label>عنوان رویداد<input id="eventTitle" required maxlength="80" placeholder="مثلاً جلسه پروژه"></label><label>تاریخ<input id="eventDate" required type="text" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label><label>نوع<select id="eventType"><option value="personal">شخصی</option><option value="public">عمومی</option><option value="project">پروژه</option></select></label><label>زمان<input id="eventTime" type="time"></label><label>توضیح<textarea id="eventNote" rows="3" maxlength="180" placeholder="توضیح کوتاه"></textarea></label><button class="save" type="submit">ذخیره رویداد</button></form></div></div>
-<script src="assets/data/events-1404.js"></script><script src="assets/data/events-1405.js"></script><script src="assets/data/events-1406.js"></script><script src="assets/js/app.js"></script><script src="assets/js/home-tools.js"></script>
-<script src="assets/js/site.js?v=20261002-1"></script>\n</body></html>
+<script src="assets/data/events-1404.js"></script><script src="assets/data/events-1405.js"></script><script src="assets/data/events-1406.js"></script><script src="assets/js/app.js"></script><script src="assets/js/home-tools.js"></script><script src="assets/js/site.js?v=20261002-2"></script>
+</body></html>
