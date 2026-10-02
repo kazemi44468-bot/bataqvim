@@ -211,9 +211,109 @@
     .home-calendar-body{padding:10px}
     .quick-date{grid-template-columns:1fr 1fr 1fr;gap:5px}
   }
+
+/* FINAL HOME / INTERNAL PAGE ALIGNMENT */
+.home-page .topbar{
+  min-height:84px;padding:12px 5%;gap:26px;
+  background:rgba(252,253,250,.94);
+  border-bottom:1px solid #d8e4e0;
+  box-shadow:0 8px 28px rgba(21,72,68,.07);
+}
+.home-page .brand{gap:11px;margin-left:auto}
+.home-page .brand-logo{width:52px;height:52px;border-radius:16px;padding:6px}
+.home-page .brand b{font-size:17px}
+.home-page .brand small{font-size:10px;color:#647b78}
+.home-page .topbar nav{
+  gap:6px;padding:4px;border:1px solid #cfe0dc;border-radius:14px;
+  background:#f7fbfa;
+}
+.home-page .topbar nav a{font-size:12px;padding:8px 13px;color:#3e5c59}
+.home-page .topbar nav a:hover{background:#e8f5f2;color:#0d706f}
+.home-page .top-actions{display:flex;gap:8px}
+.home-page .top-actions .today,.home-page .top-actions .add-btn{
+  min-height:42px;border-radius:11px;padding:7px 14px;font-size:12px;
+}
+.home-page .top-actions .today{background:#fff;color:#29413c;border:1px solid #c9dbd7}
+.home-page .top-actions .add-btn{background:linear-gradient(135deg,#0d706f,#159a98);color:#fff;border-color:#0d706f}
+
+.home-page .home-new{
+  max-width:1260px;margin:0 auto;padding:42px 5% 65px;
+}
+.home-page .home-hero{gap:16px;margin-bottom:16px}
+.home-page .hero-date,.home-page .hero-tools{
+  border-color:#d5e2de;border-radius:22px;background:rgba(255,255,253,.96);
+  box-shadow:0 18px 48px rgba(28,69,66,.07);
+}
+.home-page .hero-date{padding:26px 28px}
+.home-page .hero-date h1{font-family:VazirmatnLocal,Tahoma,sans-serif;font-size:34px;color:var(--ink)}
+.home-page .hero-date .weekday{font-size:13px;color:var(--turq-dark)}
+.home-page .hero-tools{padding:21px}
+.home-page .hero-tools-head b{font-size:15px;color:var(--ink2)}
+.home-page .quick-date select{font-family:inherit;font-size:11px}
+.home-page .hero-tools .primary-action{
+  background:linear-gradient(135deg,var(--turq-dark),var(--turq));
+}
+.home-page .calendar-card{
+  border-color:#d5e2de;border-radius:22px;background:rgba(255,255,253,.96);
+  box-shadow:0 18px 48px rgba(28,69,66,.08);
+}
+.home-page .calendar-top{padding:16px 20px}
+.home-page .calendar-heading .mark{background:var(--turq-soft);border-color:#cfe1dc;color:var(--turq-dark)}
+.home-page .calendar-heading b{font-size:16px}
+.home-page .calendar-actions button{
+  min-height:40px;border-radius:10px;border-color:#c9dbd7;
+}
+.home-page .calendar-nav-title{padding:14px 20px}
+.home-page .month-title button{font-size:19px}
+.home-page .views{border-color:#cfe0dc;background:#f3f8f6}
+.home-page .views button{font-size:11px;min-height:36px}
+.home-page .views button.active{background:var(--turq-dark);border-color:var(--turq-dark)}
+.home-page .home-calendar-body{padding:15px 18px 21px}
+.home-page .month-grid{gap:6px}
+.home-page .month-weekdays{gap:6px}
+.home-page .month-cell{min-height:92px;border-color:#d9e3df;border-radius:13px}
+.home-page .month-cell .d{font-size:13px}
+.home-page .week-grid{gap:8px}
+.home-page .week-day{border-color:#d9e3df}
+.home-page .year-grid{gap:12px}
+.home-page .year-month{border-color:#d9e3df}
+.home-page .selected-day-card,.home-page .home-filters{
+  border-color:#d7e3df;background:rgba(255,255,253,.96);
+  box-shadow:0 14px 38px rgba(28,69,66,.055);
+}
+.home-page .selected-day-card{margin-top:16px}
+.home-page .selected-day-head{padding:15px 18px;background:linear-gradient(90deg,#eef8f5,#fffdf9)}
+.home-page .day-add{background:var(--turq-soft);border-color:#cfe1dc;color:var(--turq-dark)}
+.home-page .selected-day-events .event-item{border-color:#dbe6e3}
+.home-page .home-filters{margin-top:16px}
+.home-page .home-footer{display:none}
+.home-page footer{
+  margin:0 -5% -65px;padding:25px 5%;
+}
+@media(max-width:900px){
+  .home-page .topbar nav{position:absolute;top:calc(100% + 8px);right:4%;left:4%;display:none;flex-direction:column;gap:3px;padding:8px;background:rgba(255,255,253,.98);box-shadow:0 18px 40px rgba(28,69,66,.12);z-index:30}
+  .home-page .topbar nav.mobile-open{display:flex}
+  .home-page .home-new{padding-top:28px}
+}
+@media(max-width:600px){
+  .home-page .topbar{min-height:70px;padding:9px 4%;gap:10px}
+  .home-page .brand{margin-left:0}
+  .home-page .brand-logo{width:43px;height:43px;border-radius:12px}
+  .home-page .brand b{font-size:15px}
+  .home-page .brand small{font-size:8px}
+  .home-page .top-actions{margin-right:auto}
+  .home-page .top-actions .today{display:none}
+  .home-page .home-new{padding:18px 3% 50px}
+  .home-page .hero-date{padding:20px}
+  .home-page .hero-date h1{font-size:28px}
+  .home-page .calendar-top,.home-page .calendar-nav-title{padding:12px}
+  .home-page .home-calendar-body{padding:10px}
+  .home-page .selected-day-events{grid-template-columns:1fr}
+  .home-page footer{margin:0 -3% -50px;padding:20px 3%}
+}
 </style>
 </head>
-<body>
+<body class="home-page">
 
 <header class="topbar">
   <a class="brand" href="index.html">
@@ -309,9 +409,9 @@
     </div>
   </section>
 
-  <footer class="home-footer">
-    <span>باتقویم · تقویم و رویداد</span>
-    <a href="events.html">مرکز رویدادها</a>
+  <footer>
+    <span>بستر تقویم و رویداد</span>
+    <a href="events.html">آرشیو رویدادها</a>
   </footer>
 </main>
 
