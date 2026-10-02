@@ -1,47 +1,122 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>باتقویم | تقویم، رویداد و زمان‌بندی</title>
-<meta name="description" content="تقویم روزانه، رویدادها، یادداشت‌ها و برنامه‌ریزی پروژه‌ها.">
-<meta name="theme-color" content="#147f79"><link rel="icon" href="assets/images/logo.png" type="image/png"><link rel="stylesheet" href="assets/css/app.css"></head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>باتقویم | تقویم هوشمند زمان و رویداد</title>
+<meta name="description" content="تقویم شمسی باتقویم برای مشاهده تاریخ، رویدادها و برنامه‌ریزی.">
+<meta name="theme-color" content="#147f79">
+<link rel="icon" href="assets/images/logo.png" type="image/png">
+<link rel="stylesheet" href="assets/css/app.css">
+<style>
+.home-new{max-width:1320px;margin:0 auto;padding:30px 22px 54px}
+.home-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:16px;margin-bottom:18px}
+.hero-date,.hero-tools{border:1px solid #d9e7e2;border-radius:24px;background:rgba(255,253,249,.94);box-shadow:0 18px 50px rgba(30,76,68,.07)}
+.hero-date{position:relative;overflow:hidden;padding:30px}
+.hero-date:before{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(20,127,121,.12);border-radius:50%;left:-95px;top:-120px;box-shadow:0 0 0 24px rgba(20,127,121,.025),0 0 0 48px rgba(20,127,121,.02)}
+.hero-kicker{display:flex;align-items:center;gap:9px;color:#75847f;font-size:10px;font-weight:800;letter-spacing:.08em}
+.hero-kicker i{width:7px;height:7px;border-radius:50%;background:#c19a58;display:block}
+.hero-date h1{margin:18px 0 4px;font-size:38px;line-height:1.2;color:#173f3c}
+.hero-date .weekday{display:block;color:#147f79;font-size:14px;font-weight:800;margin-bottom:20px}
+.hero-date-grid{display:flex;flex-wrap:wrap;gap:8px}
+.hero-date-grid span{padding:8px 12px;border-radius:12px;background:#f1f7f5;border:1px solid #dceae6;color:#536a65;font-size:10px}
+.hero-date-grid b{color:#224f4b;font-size:11px}
+.hero-tools{padding:22px}
+.hero-tools-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.hero-tools-head b{font-size:15px;color:#284f4b}
+.hero-tools-head small{font-size:9px;color:#8a9793}
+.quick-date{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}
+.quick-date label{font-size:9px;color:#7b8985}
+.quick-date select{width:100%;margin-top:5px;padding:9px 7px;border:1px solid #d7e5e1;border-radius:10px;background:#fff;color:#304c49;font:inherit;font-size:10px}
+.hero-tools .primary-action{width:100%;padding:11px;border:0;border-radius:11px;background:#147f79;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+.calendar-card{border:1px solid #d8e6e1;border-radius:24px;background:#fffdf9;box-shadow:0 18px 55px rgba(30,76,68,.07);overflow:hidden}
+.calendar-top{padding:18px 20px;border-bottom:1px solid #e1ebe8;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.calendar-heading{display:flex;align-items:center;gap:14px}
+.calendar-heading .mark{width:42px;height:42px;border-radius:13px;background:#edf7f4;border:1px solid #d4e8e2;display:grid;place-items:center;color:#147f79;font-size:19px}
+.calendar-heading b{display:block;font-size:17px;color:#244844}
+.calendar-heading small{display:block;margin-top:3px;font-size:9px;color:#87938f}
+.calendar-actions{display:flex;align-items:center;gap:6px}
+.calendar-actions button,.views button{border:1px solid #d8e5e1;background:#fff;color:#536762;border-radius:9px;padding:8px 11px;font:inherit;font-size:10px;cursor:pointer}
+.calendar-actions button:hover,.views button:hover{border-color:#9fc8c1;color:#147f79}
+.calendar-actions .today{background:#f0f7f5;color:#147f79;border-color:#cfe3de}
+.calendar-nav-title{padding:15px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #edf2f0}
+.calendar-nav-title .month-title button{border:0;background:transparent;color:#173f3c;font:inherit;font-weight:900;font-size:18px;cursor:pointer}
+.views{display:flex;gap:4px}
+.views button.active{background:#147f79;border-color:#147f79;color:#fff}
+.home-calendar-body{padding:14px 18px 20px}
+.date-selector{display:flex;align-items:center;gap:7px;margin-bottom:12px;padding:9px;background:#f5f9f7;border:1px solid #e0ebe8;border-radius:12px}
+.date-selector label{display:flex;align-items:center;gap:5px;color:#71817c;font-size:9px}
+.date-selector select{border:1px solid #d8e5e1;background:#fff;border-radius:8px;padding:6px 8px;font:inherit;font-size:9px;color:#38514d}
+.date-selector .date-open{margin-right:auto;border:0;border-radius:8px;padding:7px 11px;background:#e9f4f1;color:#147f79;font:inherit;font-size:9px;cursor:pointer}
+.home-lower{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:14px;margin-top:14px}
+.home-agenda,.home-filters{border:1px solid #dbe7e3;border-radius:18px;background:#fffdf9;padding:18px}
+.home-agenda h2,.home-filters h2{margin:0;color:#284e49;font-size:15px}
+.home-agenda>p{margin:4px 0 13px;color:#8a9692;font-size:9px}
+.agenda-link{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid #e3ebe8;border-radius:10px;margin-bottom:7px;background:#fff}
+.agenda-link b{font-size:10px;color:#395550}.agenda-link span{font-size:9px;color:#8b9793}
+.home-filters label{display:flex;align-items:center;gap:7px;margin-top:9px;font-size:10px;color:#5f716c}
+.home-filters input{accent-color:#147f79}
+.home-footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding:15px 18px;color:#7a8984;font-size:9px}
+.home-footer a{color:#147f79;text-decoration:none}
+@media(max-width:900px){.home-hero{grid-template-columns:1fr}.home-lower{grid-template-columns:1fr}}
+@media(max-width:600px){.home-new{padding:18px 11px 40px}.hero-date{padding:22px}.hero-date h1{font-size:29px}.calendar-top,.calendar-nav-title{padding:13px}.calendar-top{align-items:flex-start}.calendar-heading .mark{width:36px;height:36px}.calendar-heading b{font-size:14px}.calendar-actions button{padding:7px 8px}.home-calendar-body{padding:10px}.date-selector{flex-wrap:wrap}.date-selector .date-open{margin-right:0}.quick-date{gap:5px}}
+</style>
+</head>
 <body>
 <header class="topbar">
 <a class="brand" href="index.html"><span class="brand-logo"><img src="assets/images/logo.png" alt="لوگوی باتقویم"></span><span><b>باتقویم</b><small>بستر تقویم و رویداد</small></span></a>
 <nav><a href="index.html">نخست</a><a href="about.html">معرفی</a><a href="contact.html">تماس</a><a href="events.html">رویدادها</a><a href="notes.html">یادداشت‌ها</a><a href="projects.html">پروژه‌ها</a><a href="tools.html">ابزارها</a><a href="login.html">ورود</a></nav>
 <div class="top-actions"><button id="todayBtn" class="today" type="button">امروز</button><button id="addTop" class="add-btn" type="button">＋ رویداد</button></div>
 </header>
-<main>
-<section class="today-dashboard">
-<div class="today-date-panel">
-<div class="today-panel-head"><span>امروز</span></div>
-<div class="today-dates"><div class="today-main-date"><small>تاریخ شمسی</small><b id="todayJalali">—</b><span id="todayWeekday">—</span></div><div><small>سال شمسی</small><b id="todayJalaliYear">—</b><span>سال جاری</span></div><div><small>تاریخ میلادی</small><b id="todayGregorian">—</b><span id="todayGregorianYear">—</span></div><div><small>تاریخ قمری</small><b id="todayLunar">—</b></div></div>
-<div class="clock-row"><div class="analog-clock" id="analogClock" aria-label="ساعت محلی"><i class="clock-hand hour"></i><i class="clock-hand minute"></i><i class="clock-hand second"></i><b class="clock-center"></b><span class="tick t1"></span><span class="tick t2"></span><span class="tick t3"></span><span class="tick t4"></span></div><div class="digital-clock"><small>ساعت محلی دستگاه</small><strong id="liveClock">—</strong><span id="todayEvents">—</span></div><div class="world-clock-picker"><label for="worldClockCity">ساعت جهانی</label><select id="worldClockCity" aria-label="انتخاب پایتخت برای ساعت جهانی">
-<option value="Tehran" selected>تهران</option><option value="Asia/Baku">باکو</option><option value="Asia/Baghdad">بغداد</option><option value="Asia/Riyadh">ریاض</option><option value="Asia/Dubai">ابوظبی</option><option value="Asia/Kolkata">دهلی نو</option><option value="Asia/Tokyo">توکیو</option><option value="Asia/Shanghai">پکن</option><option value="Asia/Seoul">سئول</option><option value="Europe/Ankara">آنکارا</option><option value="Europe/Moscow">مسکو</option><option value="Europe/London">لندن</option><option value="Europe/Paris">پاریس</option><option value="Europe/Berlin">برلین</option><option value="Europe/Rome">رم</option><option value="Europe/Madrid">مادرید</option><option value="America/New_York">واشنگتن</option><option value="America/Toronto">اتاوا</option><option value="America/Mexico_City">مکزیکوسیتی</option><option value="America/Sao_Paulo">برازیلیا</option><option value="Australia/Sydney">کانبرا</option>
-</select><strong id="worldClockTime">—</strong></div></div></div>
-<div class="prayer-panel"><div class="today-panel-head"><span>اوقات شرعی</span><select id="prayerCity" aria-label="انتخاب شهر برای اوقات شرعی">
-<optgroup label="مراکز استان‌ها">
-<option value="Ahvaz">خوزستان · اهواز</option><option value="Arak">مرکزی · اراک</option><option value="Ardabil">اردبیل · اردبیل</option><option value="Bandar Abbas">هرمزگان · بندرعباس</option><option value="Birjand">خراسان جنوبی · بیرجند</option><option value="Bojnord">خراسان شمالی · بجنورد</option><option value="Bushehr">بوشهر · بوشهر</option><option value="Hamedan">همدان · همدان</option><option value="Ilam">ایلام · ایلام</option><option value="Isfahan">اصفهان · اصفهان</option><option value="Kerman">کرمان · کرمان</option><option value="Kermanshah">کرمانشاه · کرمانشاه</option><option value="Khoramabad">لرستان · خرم‌آباد</option><option value="Mashhad">خراسان رضوی · مشهد</option><option value="Qazvin">قزوین · قزوین</option><option value="Qom">قم · قم</option><option value="Rasht">گیلان · رشت</option><option value="Sari">مازندران · ساری</option><option value="Semnan">سمنان · سمنان</option><option value="Shiraz">فارس · شیراز</option><option value="Sistaan">سیستان و بلوچستان · زاهدان</option><option value="Tabriz">آذربایجان شرقی · تبریز</option><option value="Tehran">تهران · تهران</option><option value="Urmia">آذربایجان غربی · ارومیه</option><option value="Yasuj">کهگیلویه و بویراحمد · یاسوج</option><option value="Yazd">یزد · یزد</option><option value="Zanjan">زنجان · زنجان</option>
-<option value="Karaj">البرز · کرج</option><option value="Gorgan">گلستان · گرگان</option><option value="Sanandaj">کردستان · سنندج</option>
-</optgroup>
-<optgroup label="مراکز مهم مذهبی">
-<option value="Mashhad">مشهد مقدس</option><option value="Qom">قم مقدس</option><option value="Rey">ری · حرم حضرت عبدالعظیم</option><option value="Shiraz">شیراز · حرم شاهچراغ</option><option value="Jamkaran">جمکران · مسجد مقدس جمکران</option>
-</optgroup></select><small id="prayerDate">—</small></div><div id="prayerTimes" class="prayer-grid"><div class="prayer-loading">در حال دریافت اوقات امروز…</div></div><small class="prayer-source">اوقات شرعی بر اساس شهر انتخاب‌شده و روش محاسباتی سرویس AlAdhan نمایش داده می‌شود.</small></div>
-</section>
-<section class="calendar-shell" id="calendar">
-<div class="calendar-toolbar"><div class="title-area"><span class="eyebrow">CALENDAR · EVENTS · PLANNING</span><h1 class="calligraphy">تقویم و سالنامه</h1></div><div class="toolbar-actions"><button id="prevBtn" type="button" aria-label="ماه قبل">‹</button><button id="nextBtn" type="button" aria-label="ماه بعد">›</button><button id="todayBtn2" class="outline" type="button">امروز</button></div></div>
-<div class="calendar-layout"><section class="calendar-main"><div class="viewbar"><div class="month-title"><button id="monthPicker" type="button"></button></div><div class="views" role="tablist"><button class="view active" data-view="month" type="button">ماه</button><button class="view" data-view="week" type="button">هفته</button><button class="view" data-view="year" type="button">سال</button></div></div>
-<div class="date-selector" aria-label="انتخاب تاریخ"><label>سال<select id="yearSelect"></select></label><label>ماه<select id="monthSelect"></select></label><label>روز<select id="daySelect"></select></label><button id="openDayBtn" class="date-open" type="button">مشاهده روز</button></div>
-<div id="calendarView" aria-live="polite"></div></section>
-<aside class="side-panel"><div class="side-head"><div><small>انتخاب‌شده</small><h2 id="selectedTitle">امروز</h2></div><button id="addSide" type="button">＋</button></div><div id="dayEvents" class="event-list"></div>
-<div class="mini-block"><b>نمایش رویدادها</b><label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label><label><input type="checkbox" checked data-filter="national"> ملی</label><label><input type="checkbox" checked data-filter="religious"> مذهبی</label><label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label><label><input type="checkbox" checked data-filter="historical"> تاریخی</label><label><input type="checkbox" checked data-filter="international"> بین‌المللی</label><label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label></div></aside></div>
+
+<main class="home-new">
+<section class="home-hero">
+<div class="hero-date">
+<div class="hero-kicker"><i></i><span>BAT A QVIM · CALENDAR</span></div>
+<h1 id="todayJalali">—</h1>
+<span class="weekday" id="todayWeekday">—</span>
+<div class="hero-date-grid">
+<span>سال شمسی <b id="todayJalaliYear">—</b></span>
+<span>میلادی <b id="todayGregorian">—</b></span>
+<span>سال میلادی <b id="todayGregorianYear">—</b></span>
+<span>قمری <b id="todayLunar">—</b></span>
+</div>
+</div>
+<div class="hero-tools">
+<div class="hero-tools-head"><b>پرش به تاریخ</b><small>انتخاب سریع</small></div>
+<div class="quick-date">
+<label>سال<select id="yearSelect"></select></label>
+<label>ماه<select id="monthSelect"></select></label>
+<label>روز<select id="daySelect"></select></label>
+</div>
+<button id="openDayBtn" class="primary-action" type="button">مشاهده روز انتخاب‌شده</button>
+</div>
 </section>
 
-<div class="workspace-title"><span>فضای شخصی</span><h2>یادداشت، تقویم شخصی و پروژه</h2></div><div class="workspace-links"><a href="notes.html"><b>دفترچه یادداشت</b><span>یادداشت‌های شخصی و موضوعی</span><i>←</i></a><a href="projects.html"><b>مدیریت پروژه</b><span>موضوع، زمان‌بندی و نقاط عطف</span><i>←</i></a><a href="events.html"><b>سالنامه و رویدادها</b><span>آرشیو و مناسبت‌های هر روز</span><i>←</i></a></div>
+<section class="calendar-card" id="calendar">
+<div class="calendar-top">
+<div class="calendar-heading"><span class="mark">۲۴</span><div><b>تقویم باتقویم</b><small>تقویم شمسی، رویدادها و برنامه‌ریزی</small></div></div>
+<div class="calendar-actions"><button id="prevBtn" type="button" aria-label="قبلی">‹</button><button id="todayBtn2" class="today" type="button">امروز</button><button id="nextBtn" type="button" aria-label="بعدی">›</button></div>
+</div>
+<div class="calendar-nav-title"><div class="month-title"><button id="monthPicker" type="button"></button></div><div class="views" role="tablist" aria-label="نمایش تقویم"><button class="view active" data-view="month" type="button">ماه</button><button class="view" data-view="week" type="button">هفته</button><button class="view" data-view="year" type="button">سال</button></div></div>
+<div class="home-calendar-body"><div id="calendarView" aria-live="polite"></div></div>
+</section>
 
-<section class="month-agenda section"><div class="section-title"><span>این ماه</span><div><small>مرور سریع</small><h2>مناسبت‌ها و رویدادهای ماه</h2></div></div><div id="monthAgendaList" class="month-agenda-list"></div></section>
-<section class="quick-stats" id="agenda"><div><b id="eventCount">۰</b><span>رویداد</span></div><div><b>۳</b><span>گاه‌شماری روز</span></div><div><b>دفتر</b><span>یادداشت شخصی</span></div><div><b>پروژه</b><span>زمان‌بندی اختصاصی</span></div></section>
+<section class="home-lower">
+<div class="home-agenda"><h2>رویدادهای نزدیک</h2><p>رویدادهای تقویم را از نمای روز و آرشیو رویدادها دنبال کنید.</p><div id="monthAgendaList"></div><a class="agenda-link" href="events.html"><b>آرشیو رویدادها</b><span>مشاهده همه ←</span></a></div>
+<aside class="home-filters"><h2>تقویم‌های فعال</h2><label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label><label><input type="checkbox" checked data-filter="national"> ملی</label><label><input type="checkbox" checked data-filter="religious"> مذهبی</label><label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label><label><input type="checkbox" checked data-filter="international"> بین‌المللی</label><label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label></aside>
+</section>
+<footer class="home-footer"><span>باتقویم · تقویم و رویداد</span><a href="doc/">مستندات</a></footer>
 </main>
-<footer><span>بستر تقویم و رویداد</span><a href="doc/">مستندات</a></footer>
-<div class="modal" id="eventModal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="closeModal" type="button">×</button><h2 id="modalTitle">ثبت رویداد</h2><form id="eventForm"><label>عنوان رویداد<input id="eventTitle" required maxlength="80" placeholder="مثلاً جلسه پروژه"></label><label>تاریخ<input id="eventDate" required type="text" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label><label>نوع<select id="eventType"><option value="personal">شخصی</option><option value="public">عمومی</option><option value="project">پروژه</option></select></label><label>زمان<input id="eventTime" type="time"></label><label>توضیح<textarea id="eventNote" rows="3" maxlength="180" placeholder="توضیح کوتاه"></textarea></label><button class="save" type="submit">ذخیره رویداد</button></form></div></div>
-<script src="assets/data/recurring-events.js"></script><script src="assets/data/events-1404.js"></script><script src="assets/data/events-1405.js"></script><script src="assets/data/events-1406.js"></script><script src="assets/js/app.js"></script><script src="assets/js/home-tools.js"></script><script src="assets/js/site.js?v=20261002-2"></script>
-</body></html>
+
+<div class="modal" id="eventModal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="closeModal" type="button">×</button><h2 id="modalTitle">ثبت رویداد</h2><form id="eventForm"><label>عنوان رویداد<input id="eventTitle" required maxlength="80" placeholder="عنوان رویداد"></label><label>تاریخ<input id="eventDate" required type="text" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label><label>نوع<select id="eventType"><option value="personal">شخصی</option><option value="public">عمومی</option><option value="project">پروژه</option></select></label><label>زمان<input id="eventTime" type="time"></label><label>توضیح<textarea id="eventNote" rows="3" maxlength="180"></textarea></label><button class="save" type="submit">ذخیره رویداد</button></form></div></div>
+
+<script src="assets/data/recurring-events.js"></script>
+<script src="assets/data/events-1404.js"></script>
+<script src="assets/data/events-1405.js"></script>
+<script src="assets/data/events-1406.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/home-tools.js"></script>
+<script src="assets/js/site.js?v=20261002-3"></script>
+</body>
+</html>
