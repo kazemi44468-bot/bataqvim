@@ -43,8 +43,42 @@
 <button class="add-btn" id="ageBtn">محاسبه سن</button><div class="tool-result" id="ageResult">نتیجه اینجا نمایش داده می‌شود.</div>
 </article>
 </div>
+<div class="tools-grid tools-grid-expanded">
+<article class="tool-card tool-card-wide">
+<span class="tool-kicker">۰۵ · اوقات شرعی</span><h2>اوقات شرعی استان‌ها</h2>
+<p>استان را انتخاب کنید تا اوقات شرعی امروز بر اساس مختصات مرکز استان محاسبه و نمایش داده شود.</p>
+<div class="tool-form two-cols"><label>استان<select id="toolPrayerProvince"></select></label><label>تاریخ امروز<strong id="toolPrayerDate" class="tool-inline-value">—</strong></label></div>
+<div id="toolPrayerTimes" class="prayer-grid"><div class="prayer-loading">استان را انتخاب کنید.</div></div>
+<small class="prayer-source">محاسبه از سرویس AlAdhan با روش محاسباتی ۷ انجام می‌شود؛ برای اعلام رسمی مناسبت‌ها یا اذان محلی، منبع محلی را ملاک قرار دهید.</small>
+</article>
+<article class="tool-card">
+<span class="tool-kicker">۰۶ · تاریخ‌های مرتبط</span><h2>تاریخ قبل و بعد</h2>
+<p>یک تاریخ شمسی و مقدار جابه‌جایی را وارد کنید تا تاریخ قبل و بعد از آن محاسبه شود.</p>
+<div class="tool-form two-cols"><label>تاریخ پایه<input id="relatedDate" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label><label>تعداد روز<input id="relatedDays" inputmode="numeric" value="۴۰"></label></div>
+<button class="add-btn" id="relatedBtn">محاسبه تاریخ‌های مرتبط</button><div class="tool-result" id="relatedResult">نتیجه اینجا نمایش داده می‌شود.</div>
+</article>
+<article class="tool-card">
+<span class="tool-kicker">۰۷ · شمارش معکوس</span><h2>تا رویداد بعدی</h2>
+<p>تاریخ یک رویداد را وارد کنید تا فاصله آن تا امروز محاسبه شود.</p>
+<div class="tool-form"><label>تاریخ رویداد<input id="countdownDate" inputmode="numeric" placeholder="۱۴۰۵/۱۲/۲۹"></label></div>
+<button class="add-btn" id="countdownBtn">محاسبه شمارش معکوس</button><div class="tool-result" id="countdownResult">نتیجه اینجا نمایش داده می‌شود.</div>
+</article>
+<article class="tool-card">
+<span class="tool-kicker">۰۸ · امروز</span><h2>نمایشگر تاریخ امروز</h2>
+<p>تاریخ امروز را هم‌زمان در سه تقویم به همراه روز هفته مشاهده کنید.</p>
+<div class="today-tool" id="todayToolSummary"><b>—</b><span>—</span><small>—</small></div>
+<button class="outline" id="refreshTodayTool">به‌روزرسانی</button>
+</article>
+<article class="tool-card">
+<span class="tool-kicker">۰۹ · قبله</span><h2>قبله‌نما</h2>
+<p>با اجازه کاربر، جهت قبله و فاصله تقریبی تا کعبه را بر اساس موقعیت دستگاه محاسبه می‌کند.</p>
+<button class="add-btn" id="qiblaBtn">تشخیص موقعیت و محاسبه قبله</button>
+<div class="qibla-result" id="qiblaResult">برای شروع، موقعیت مکانی مرورگر لازم است.</div>
+</article>
+</div>
 </section>
 </main>
 <footer><span>بستر تقویم و رویداد</span><a href="index.html">بازگشت به تقویم</a></footer>
-<script src="assets/js/tools.js?v=20261002-2"></script>
+<script src="assets/data/iran-provinces.js"></script>
+<script src="assets/js/tools.js?v=20261002-3"></script>
 <script src="assets/js/site.js?v=20261002-1"></script>\n</body></html>
