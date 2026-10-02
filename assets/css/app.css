@@ -529,3 +529,20 @@ body:has(.home-new) .topbar nav{flex:0 1 auto;margin-inline:auto;max-width:100%;
 body:has(.home-new) .top-actions{flex:0 0 auto}
 body:has(.home-new) .topbar nav a{white-space:nowrap}
 @media(max-width:900px){body:has(.home-new) .topbar{padding-inline:4%;gap:10px}body:has(.home-new) .topbar nav{display:none}}
+
+
+/* HOMEPAGE YEAR VIEW — isolated namespace; prevents legacy year CSS collisions */
+body:has(.home-new) .home-year-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
+body:has(.home-new) .home-year-month{display:block!important;min-width:0!important;width:100%!important;height:auto!important;border:1px solid var(--line)!important;border-radius:14px!important;padding:12px!important;background:#fffdf9!important;box-shadow:0 5px 18px rgba(30,70,65,.035)!important;overflow:hidden!important}
+body:has(.home-new) .home-year-month>header{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important;margin:0 0 9px!important;padding:0!important;border:0!important;background:transparent!important}
+body:has(.home-new) .home-year-month>header h3{margin:0!important;font-size:15px!important;line-height:1.6!important;color:var(--ink)!important}
+body:has(.home-new) .home-year-month>header small{font-size:9px!important;color:var(--muted)!important;white-space:nowrap!important}
+body:has(.home-new) .home-mini-weekdays{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:2px!important;margin:0 0 3px!important;padding:0!important}
+body:has(.home-new) .home-mini-weekdays span{text-align:center!important;font-size:8px!important;line-height:1.6!important;color:#87938f!important;font-weight:700!important}
+body:has(.home-new) .home-mini-days{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:2px!important;margin:0!important;padding:0!important}
+body:has(.home-new) .home-mini-days span,.home-new .home-mini-days button{min-width:0!important;width:100%!important;min-height:25px!important;height:auto!important;border:0!important;background:transparent!important;text-align:center!important;font:inherit!important;font-size:9px!important;line-height:1.6!important;padding:3px!important;border-radius:6px!important;color:#6f7c78!important;box-shadow:none!important}
+body:has(.home-new) .home-mini-days button{cursor:pointer!important}
+body:has(.home-new) .home-mini-days button:hover{background:var(--turq-soft)!important;color:var(--turq-dark)!important;transform:none!important}
+body:has(.home-new) .home-mini-days .has-event{color:#92743f!important;font-weight:900!important;background:#faf3e4!important}
+@media(max-width:1000px){body:has(.home-new) .home-year-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:600px){body:has(.home-new) .home-year-grid{grid-template-columns:1fr!important}.home-new .home-year-month{padding:10px!important}.home-new .home-mini-days span,.home-new .home-mini-days button{min-height:24px!important}}
