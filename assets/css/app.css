@@ -388,3 +388,12 @@ html,body{max-width:100%;overflow-x:hidden}
   .world-clock-picker{grid-template-columns:auto 1fr;gap:7px}
   .world-clock-picker strong{grid-column:1/-1;text-align:center;padding-top:3px;border-top:1px solid #e1ebe8}
 }
+
+/* اصلاح نهایی ساعت جهانی داخل کارت امروز */
+.today-date-panel .clock-row{display:grid;grid-template-columns:auto minmax(120px,1fr) minmax(170px,220px);align-items:center;gap:18px}
+.today-date-panel .world-clock-picker{display:grid;grid-template-columns:1fr;gap:5px;margin:0;min-width:0;padding:9px 11px}
+.today-date-panel .world-clock-picker label{font-size:8px}
+.today-date-panel .world-clock-picker select{width:100%;max-width:none;min-width:0;box-sizing:border-box;font-size:9px}
+.today-date-panel .world-clock-picker strong{font-size:18px;text-align:center}
+@media(max-width:900px){.today-date-panel .clock-row{grid-template-columns:auto 1fr}.today-date-panel .world-clock-picker{grid-column:1/-1;width:100%;box-sizing:border-box}.today-date-panel .world-clock-picker select{width:100%}}
+@media(max-width:600px){.today-date-panel .clock-row{grid-template-columns:1fr 1fr;gap:10px}.today-date-panel .world-clock-picker{grid-column:1/-1}.today-date-panel .world-clock-picker strong{font-size:17px}}
