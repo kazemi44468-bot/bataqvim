@@ -8,7 +8,7 @@ function key(y,m,d){return y+"/"+pad(m)+"/"+pad(d)}
 function validDate(y,m,d){return Number.isInteger(y)&&m>=1&&m<=12&&d>=1&&d<=daysIn(y,m)}
 function todayJ(){const d=new Date();return g2j(d.getFullYear(),d.getMonth()+1,d.getDate())}
 const [todayY,todayM,todayD]=todayJ();
-let state={y:todayY,m:todayM,d:todayD,view:"month",selected:key(todayY,todayM,todayD)};
+let state={y:todayY,m:todayM,d:todayD,view:"week",selected:key(todayY,todayM,todayD)};
 // نمای تقویم: listener مستقل و مقاوم در برابر خطاهای بخش‌های دیگر صفحه
 root.addEventListener("click",e=>{const b=e.target.closest(".view");if(!b||!b.dataset.view)return;e.preventDefault();state.view=b.dataset.view;if(state.view==="year")state.selected=key(state.y,state.m,state.d);render()});
 const defaults=[
