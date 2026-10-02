@@ -9,6 +9,8 @@ function validDate(y,m,d){return Number.isInteger(y)&&m>=1&&m<=12&&d>=1&&d<=days
 function todayJ(){const d=new Date();return g2j(d.getFullYear(),d.getMonth()+1,d.getDate())}
 const [todayY,todayM,todayD]=todayJ();
 let state={y:todayY,m:todayM,d:todayD,view:"month",selected:key(todayY,todayM,todayD)};
+// نمای تقویم: listener مستقل و مقاوم در برابر خطاهای بخش‌های دیگر صفحه
+root.addEventListener("click",e=>{const b=e.target.closest(".view");if(!b||!b.dataset.view)return;e.preventDefault();state.view=b.dataset.view;if(state.view==="year")state.selected=key(state.y,state.m,state.d);render()});
 const defaults=[
 {id:"demo-1",date:key(todayY,todayM,todayD),title:"نمونه رویداد امروز",type:"personal",time:"09:00",note:"می‌توانید این رویداد نمونه را حذف کنید."},
 {id:"demo-2",date:key(todayY,todayM,Math.min(todayD+2,daysIn(todayY,todayM))),title:"جلسه برنامه‌ریزی پروژه",type:"project",time:"11:00",note:"نمونه رویداد برای نمایش قابلیت تقویم."}
@@ -38,7 +40,7 @@ function openModal(date=state.selected){$("#eventModal").hidden=false;$("#eventD
 function closeModal(){$("#eventModal").hidden=true}
 $("#prevBtn")?.addEventListener("click",()=>moveMonth(-1));$("#nextBtn")?.addEventListener("click",()=>moveMonth(1));$("#todayBtn")?.addEventListener("click",goToday);$("#todayBtn2")?.addEventListener("click",goToday);$("#addTop")?.addEventListener("click",()=>openModal());$("#addSide")?.addEventListener("click",()=>openModal());$("#closeModal")?.addEventListener("click",closeModal);$("#eventModal")?.addEventListener("click",e=>{if(e.target.id==="eventModal")closeModal()});
 $("#eventForm")?.addEventListener("submit",e=>{e.preventDefault();const p=e.target.eventDate.value.replace(/\s/g,"").split("/").map(en);if(p.length!==3||!validDate(...p))return alert("تاریخ معتبر نیست.");events.push({id:Date.now().toString(36),date:key(...p),title:e.target.eventTitle.value.trim(),type:e.target.eventType.value,time:e.target.eventTime.value,note:e.target.eventNote.value.trim()});state.y=p[0];state.m=p[1];state.d=p[2];state.selected=key(...p);save();e.target.reset();closeModal();render()});
-$$(".view").forEach(b=>b.onclick=()=>{state.view=b.dataset.view;if(state.view==="year"){state.selected=key(state.y,state.m,state.d)}render()});$$("[data-filter]").forEach(b=>b.onchange=render);$("#monthPicker")?.addEventListener("click",()=>{state.view="month";render()});
+$(".view").forEach(b=>b.onclick=()=>{state.view=b.dataset.view;if(state.view==="year"){state.selected=key(state.y,state.m,state.d)}render()});$$("[data-filter]").forEach(b=>b.onchange=render);$("#monthPicker")?.addEventListener("click",()=>{state.view="month";render()});
 $("#yearSelect")?.addEventListener("change",e=>{state.y=+e.target.value;state.d=Math.min(state.d,daysIn(state.y,state.m));state.selected=key(state.y,state.m,state.d);render()});
 $("#monthSelect")?.addEventListener("change",e=>{state.m=+e.target.value;state.d=Math.min(state.d,daysIn(state.y,state.m,state.d));state.selected=key(state.y,state.m,state.d);render()});
 $("#daySelect")?.addEventListener("change",e=>{state.d=+e.target.value;state.selected=key(state.y,state.m,state.d);render()});
