@@ -9,175 +9,761 @@
 <link rel="icon" href="assets/images/logo.png" type="image/png">
 <link rel="stylesheet" href="assets/css/app.css">
 <style>
-.home-new{max-width:1320px;margin:0 auto;padding:30px 22px 54px}
-.home-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:16px;margin-bottom:18px}
-.hero-date,.hero-tools{border:1px solid #d9e7e2;border-radius:24px;background:rgba(255,253,249,.94);box-shadow:0 18px 50px rgba(30,76,68,.07)}
-.hero-date{position:relative;overflow:hidden;padding:30px}
-.hero-date:before{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(20,127,121,.12);border-radius:50%;left:-95px;top:-120px;box-shadow:0 0 0 24px rgba(20,127,121,.025),0 0 0 48px rgba(20,127,121,.02)}
-.hero-kicker{display:flex;align-items:center;gap:9px;color:#75847f;font-size:10px;font-weight:800;letter-spacing:.08em}
-.hero-kicker i{width:7px;height:7px;border-radius:50%;background:#c19a58;display:block}
-.hero-date h1{margin:18px 0 4px;font-size:38px;line-height:1.2;color:#173f3c}
-.hero-date .weekday{display:block;color:#147f79;font-size:14px;font-weight:800;margin-bottom:20px}
-.hero-date-grid{display:flex;flex-wrap:wrap;gap:8px}
-.hero-date-grid span{padding:8px 12px;border-radius:12px;background:#f1f7f5;border:1px solid #dceae6;color:#536a65;font-size:10px}
-.hero-date-grid b{color:#224f4b;font-size:11px}
-.hero-tools{padding:22px}
-.hero-tools-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
-.hero-tools-head b{font-size:15px;color:#284f4b}
-.hero-tools-head small{font-size:9px;color:#8a9793}
-.quick-date{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}
-.quick-date label{font-size:9px;color:#7b8985}
-.quick-date select{width:100%;margin-top:5px;padding:9px 7px;border:1px solid #d7e5e1;border-radius:10px;background:#fff;color:#304c49;font:inherit;font-size:10px}
-.hero-tools .primary-action{width:100%;padding:11px;border:0;border-radius:11px;background:#147f79;color:#fff;font:inherit;font-weight:800;cursor:pointer}
-.calendar-card{border:1px solid #d8e6e1;border-radius:24px;background:#fffdf9;box-shadow:0 18px 55px rgba(30,76,68,.07);overflow:hidden}
-.calendar-top{padding:18px 20px;border-bottom:1px solid #e1ebe8;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.calendar-heading{display:flex;align-items:center;gap:14px}
-.calendar-heading .mark{width:42px;height:42px;border-radius:13px;background:#edf7f4;border:1px solid #d4e8e2;display:grid;place-items:center;color:#147f79;font-size:19px}
-.calendar-heading b{display:block;font-size:17px;color:#244844}
-.calendar-heading small{display:block;margin-top:3px;font-size:9px;color:#87938f}
-.calendar-actions{display:flex;align-items:center;gap:6px}
-.calendar-actions button,.views button{border:1px solid #d8e5e1;background:#fff;color:#536762;border-radius:9px;padding:8px 11px;font:inherit;font-size:10px;cursor:pointer}
-.calendar-actions button:hover,.views button:hover{border-color:#9fc8c1;color:#147f79}
-.calendar-actions .today{background:#f0f7f5;color:#147f79;border-color:#cfe3de}
-.calendar-nav-title{padding:15px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #edf2f0}
-.calendar-nav-title .month-title button{border:0;background:transparent;color:#173f3c;font:inherit;font-weight:900;font-size:18px;cursor:pointer}
-.views{display:flex;gap:4px}
-.views button.active{background:#147f79;border-color:#147f79;color:#fff}
-.home-calendar-body{padding:14px 18px 20px}
-.date-selector{display:flex;align-items:center;gap:7px;margin-bottom:12px;padding:9px;background:#f5f9f7;border:1px solid #e0ebe8;border-radius:12px}
-.date-selector label{display:flex;align-items:center;gap:5px;color:#71817c;font-size:9px}
-.date-selector select{border:1px solid #d8e5e1;background:#fff;border-radius:8px;padding:6px 8px;font:inherit;font-size:9px;color:#38514d}
-.date-selector .date-open{margin-right:auto;border:0;border-radius:8px;padding:7px 11px;background:#e9f4f1;color:#147f79;font:inherit;font-size:9px;cursor:pointer}
-.home-lower{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
-.home-agenda,.home-filters{border:1px solid #dbe7e3;border-radius:18px;background:#fffdf9;padding:18px}
-.home-agenda h2,.home-filters h2{margin:0;color:#284e49;font-size:15px}
-.home-agenda>p{margin:4px 0 13px;color:#8a9692;font-size:9px}
-.agenda-link{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid #e3ebe8;border-radius:10px;margin-bottom:7px;background:#fff}
-.agenda-link b{font-size:10px;color:#395550}.agenda-link span{font-size:9px;color:#8b9793}
-.home-filters{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.home-filters h2{white-space:nowrap}.filter-strip{display:flex;flex:1;flex-wrap:wrap;gap:7px}.home-filters label{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid #dce8e4;border-radius:99px;background:#f8fbfa;font-size:9px;color:#5f716c}
-.home-filters input{accent-color:#147f79}
-.home-footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding:15px 18px;color:#7a8984;font-size:9px}
-.home-footer a{color:#147f79;text-decoration:none}
-@media(max-width:900px){.home-hero{grid-template-columns:1fr}.home-filters{align-items:flex-start;flex-direction:column;gap:9px}}
-@media(max-width:600px){.home-new{padding:18px 11px 40px}.hero-date{padding:22px}.hero-date h1{font-size:29px}.calendar-top,.calendar-nav-title{padding:13px}.calendar-top{align-items:flex-start}.calendar-heading .mark{width:36px;height:36px}.calendar-heading b{font-size:14px}.calendar-actions button{padding:7px 8px}.home-calendar-body{padding:10px}.date-selector{flex-wrap:wrap}.date-selector .date-open{margin-right:0}.quick-date{gap:5px}}
-</style>
+  :root{
+    --bg:#fffdf9; --card:#ffffff; --line:#d9e7e2; --line-soft:#e7efec;
+    --ink:#173f3c; --ink-2:#294d49; --muted:#7b8a86; --brand:#147f79;
+    --brand-soft:#edf7f4; --gold:#c19a58; --danger:#a26d62;
+    --shadow:0 18px 50px rgba(30,76,68,.07);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:#f6faf8;color:var(--ink)}
+  button{font:inherit;cursor:pointer}
 
-<style>
-.selected-day-card{margin-top:14px;border:1px solid #d7e5e1;border-radius:20px;background:#fffdf9;box-shadow:0 14px 38px rgba(30,76,68,.06);overflow:hidden}
-.selected-day-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 19px;border-bottom:1px solid #e1ebe8;background:linear-gradient(90deg,#eef7f4,#fffdf9)}
-.selected-day-head span{display:block;color:#7b8a86;font-size:9px;margin-bottom:3px}.selected-day-head h2{margin:0;color:#244844;font-size:18px}
-.day-add{border:1px solid #cfe2dd;background:#edf7f4;color:#147f79;border-radius:9px;padding:8px 11px;font:inherit;font-size:9px;cursor:pointer}.day-add:hover{background:#e2f1ed}
-.selected-day-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px 14px}.selected-day-events .event-item{position:relative;min-height:66px;margin:0;padding:12px 13px;border:1px solid #e0e9e6;border-radius:12px;background:#fff;box-shadow:none}.selected-day-events .event-item b{display:block;font-size:11px;color:#294d49;line-height:1.9}.selected-day-events .event-item small{display:block;margin-top:3px;color:#7a8985;font-size:9px}.selected-day-events .official-event{background:#fcfaf4;border-color:#e7dcc4}.selected-day-events .event-item>button{position:absolute;left:8px;top:7px;border:0;background:transparent;color:#a26d62;cursor:pointer;font-size:14px}.selected-day-events .empty{grid-column:1/-1;padding:20px;text-align:center;color:#7d8b87;font-size:10px;border:1px dashed #cbded9;border-radius:11px;background:#fbfdfc}
-@media(max-width:700px){.selected-day-events{grid-template-columns:1fr}.selected-day-head{padding:13px}.selected-day-head h2{font-size:15px}}
+  /* ---------- Topbar ---------- */
+  .topbar{display:flex;align-items:center;gap:14px;padding:12px 22px;background:rgba(255,253,249,.95);
+          border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand-logo{width:38px;height:38px;border-radius:12px;background:var(--brand-soft);
+              display:grid;place-items:center;border:1px solid var(--line)}
+  .brand-logo img{width:24px;height:24px}
+  .brand b{display:block;font-size:15px}
+  .brand small{display:block;font-size:9px;color:var(--muted)}
+  .topbar nav{display:flex;gap:14px;margin-inline-start:auto}
+  .topbar nav a{color:var(--ink-2);text-decoration:none;font-size:12px}
+  .topbar nav a:hover{color:var(--brand)}
+  .top-actions{display:flex;gap:6px}
+  .top-actions .today,.top-actions .add-btn{border:1px solid var(--line);background:#fff;
+    border-radius:9px;padding:8px 12px;font-size:11px;color:var(--ink-2)}
+  .top-actions .today{background:var(--brand-soft);color:var(--brand);border-color:#cfe3de}
+  .top-actions .add-btn{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+  /* ---------- Layout ---------- */
+  .home-new{max-width:1320px;margin:0 auto;padding:24px 22px 54px}
+
+  /* ---------- Hero ---------- */
+  .home-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);
+             gap:14px;margin-bottom:16px}
+  .hero-date,.hero-tools{border:1px solid var(--line);border-radius:22px;background:var(--bg);box-shadow:var(--shadow)}
+  .hero-date{position:relative;overflow:hidden;padding:26px}
+  .hero-date:before{content:"";position:absolute;width:240px;height:240px;border:1px solid rgba(20,127,121,.12);
+                    border-radius:50%;inset-inline-start:-95px;top:-120px;
+                    box-shadow:0 0 0 24px rgba(20,127,121,.025),0 0 0 48px rgba(20,127,121,.02)}
+  .hero-kicker{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.08em}
+  .hero-kicker i{width:7px;height:7px;border-radius:50%;background:var(--gold);display:block}
+  .hero-date h1{margin:16px 0 4px;font-size:36px;line-height:1.2;color:var(--ink)}
+  .hero-date .weekday{display:block;color:var(--brand);font-size:14px;font-weight:800;margin-bottom:18px}
+  .hero-date-grid{display:flex;flex-wrap:wrap;gap:8px}
+  .hero-date-grid span{padding:8px 12px;border-radius:12px;background:#f1f7f5;border:1px solid #dceae6;
+                       color:#536a65;font-size:10px}
+  .hero-date-grid b{color:#224f4b;font-size:11px}
+
+  .hero-tools{padding:20px}
+  .hero-tools-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .hero-tools-head b{font-size:14px;color:var(--ink-2)}
+  .hero-tools-head small{font-size:9px;color:var(--muted)}
+  .quick-date{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}
+  .quick-date label{font-size:9px;color:var(--muted)}
+  .quick-date select{width:100%;margin-top:5px;padding:9px 7px;border:1px solid #d7e5e1;border-radius:10px;
+                     background:#fff;color:#304c49;font:inherit;font-size:10px}
+  .hero-tools .primary-action{width:100%;padding:11px;border:0;border-radius:11px;background:var(--brand);
+                              color:#fff;font-weight:800}
+
+  /* ---------- Calendar shell ---------- */
+  .calendar-card{border:1px solid var(--line);border-radius:22px;background:var(--bg);box-shadow:var(--shadow);overflow:hidden}
+  .calendar-top{padding:16px 20px;border-bottom:1px solid var(--line-soft);
+                display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+  .calendar-heading{display:flex;align-items:center;gap:12px}
+  .calendar-heading .mark{width:42px;height:42px;border-radius:13px;background:var(--brand-soft);
+                          border:1px solid #d4e8e2;display:grid;place-items:center;color:var(--brand);font-size:18px;font-weight:800}
+  .calendar-heading b{display:block;font-size:16px;color:var(--ink)}
+  .calendar-heading small{display:block;margin-top:3px;font-size:9px;color:var(--muted)}
+  .calendar-actions{display:flex;align-items:center;gap:6px}
+  .calendar-actions button,.views button{border:1px solid #d8e5e1;background:#fff;color:#536762;
+                                         border-radius:9px;padding:8px 11px;font-size:10px}
+  .calendar-actions button:hover,.views button:hover{border-color:#9fc8c1;color:var(--brand)}
+  .calendar-actions .today{background:var(--brand-soft);color:var(--brand);border-color:#cfe3de}
+
+  .calendar-nav-title{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+                      gap:10px;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+  .month-title button{border:0;background:transparent;color:var(--ink);font-weight:900;font-size:17px;padding:4px 0}
+  .views{display:flex;gap:4px}
+  .views button.active{background:var(--brand);border-color:var(--brand);color:#fff}
+
+  .home-calendar-body{padding:14px 18px 20px}
+
+  /* ---------- Month view ---------- */
+  .month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+  .month-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:6px}
+  .month-weekdays span{text-align:center;font-size:10px;font-weight:800;color:var(--muted)}
+  .month-cell{min-height:82px;border:1px solid var(--line-soft);border-radius:12px;background:#fff;
+              padding:7px;display:flex;flex-direction:column;gap:4px;position:relative}
+  .month-cell .d{font-size:12px;font-weight:800;color:var(--ink-2)}
+  .month-cell .ev{font-size:8px;line-height:1.5;color:#7a5a2e;background:#faf2e1;border-radius:6px;
+                  padding:2px 4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .month-cell.is-today{border-color:var(--brand);background:#f2faf7}
+  .month-cell.is-today .d{color:var(--brand)}
+  .month-cell.has-event{border-color:#e7dcc4}
+  .month-cell.pad{background:#f9fbfa;border-style:dashed;opacity:.6}
+
+  /* ---------- Week view ---------- */
+  .week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+  .week-day{border:1px solid var(--line-soft);border-radius:14px;background:#fff;padding:9px;min-height:180px}
+  .week-day .wd{font-size:10px;color:var(--muted);margin-bottom:4px}
+  .week-day .wn{font-size:16px;font-weight:900;color:var(--ink-2)}
+  .week-day.is-today{border-color:var(--brand);background:#f2faf7}
+  .week-day .ev{margin-top:6px;font-size:9px;background:#faf2e1;color:#7a5a2e;border-radius:7px;padding:4px 6px}
+
+  /* ---------- Year view ---------- */
+  .year-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .year-month{border:1px solid var(--line);border-radius:16px;background:var(--bg);padding:12px;box-shadow:0 7px 22px rgba(30,76,68,.04)}
+  .year-month>header{display:flex;align-items:center;justify-content:space-between;
+                     margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--line-soft)}
+  .year-month>header h3{margin:0;font-size:14px;color:var(--ink)}
+  .year-month>header small{font-size:9px;color:var(--muted)}
+  .mini-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:4px}
+  .mini-weekdays span{text-align:center;font-size:9px;color:var(--muted);font-weight:800}
+  .mini-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+  .mini-days span,.mini-days button{min-height:26px;border:0;background:transparent;text-align:center;
+                                    font-size:10px;padding:3px 1px;border-radius:6px;color:#697873}
+  .mini-days button:hover{background:#e8f5f1;color:var(--brand)}
+  .mini-days .is-today{background:var(--brand);color:#fff;font-weight:900}
+  .mini-days .has-event{color:#98733d;font-weight:900;background:#faf2e1}
+  .mini-days .pad{opacity:.3}
+
+  /* ---------- Selected day ---------- */
+  .selected-day-card{margin-top:14px;border:1px solid var(--line);border-radius:18px;background:var(--bg);
+                     box-shadow:var(--shadow);overflow:hidden}
+  .selected-day-head{display:flex;align-items:center;justify-content:space-between;gap:12px;
+                     padding:15px 18px;border-bottom:1px solid var(--line-soft);
+                     background:linear-gradient(90deg,#eef7f4,var(--bg))}
+  .selected-day-head span{display:block;color:var(--muted);font-size:9px;margin-bottom:3px}
+  .selected-day-head h2{margin:0;color:var(--ink);font-size:17px}
+  .day-add{border:1px solid #cfe2dd;background:var(--brand-soft);color:var(--brand);
+           border-radius:9px;padding:8px 11px;font-size:9px}
+  .day-add:hover{background:#e2f1ed}
+  .selected-day-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px 14px}
+  .selected-day-events .event-item{position:relative;min-height:64px;padding:12px 13px;
+    border:1px solid var(--line-soft);border-radius:12px;background:#fff}
+  .selected-day-events .event-item b{display:block;font-size:11px;color:var(--ink-2)}
+  .selected-day-events .event-item small{display:block;margin-top:3px;color:var(--muted);font-size:9px}
+  .selected-day-events .official-event{background:#fcfaf4;border-color:#e7dcc4}
+  .selected-day-events .event-item>button{position:absolute;inset-inline-start:8px;top:7px;border:0;
+    background:transparent;color:var(--danger);font-size:14px}
+  .selected-day-events .empty{grid-column:1/-1;padding:20px;text-align:center;color:var(--muted);
+    font-size:10px;border:1px dashed #cbded9;border-radius:11px;background:#fbfdfc}
+
+  /* ---------- Modal ---------- */
+  .modal{position:fixed;inset:0;background:rgba(20,50,45,.45);display:grid;place-items:center;z-index:100;padding:16px}
+  .modal[hidden]{display:none}
+  .modal-card{width:min(420px,100%);background:#fff;border-radius:18px;padding:20px;position:relative;
+              box-shadow:0 24px 60px rgba(20,50,45,.25)}
+  .modal-card h2{margin:0 0 14px;font-size:16px;color:var(--ink)}
+  .modal-card .close{position:absolute;inset-inline-end:12px;top:10px;border:0;background:transparent;
+                     font-size:20px;color:var(--muted)}
+  .modal-card form{display:grid;gap:10px}
+  .modal-card label{display:grid;gap:5px;font-size:10px;color:var(--muted)}
+  .modal-card input,.modal-card select,.modal-card textarea{border:1px solid #d8e5e1;border-radius:9px;
+    padding:9px 10px;font:inherit;font-size:11px;color:var(--ink-2);background:#fff}
+  .modal-card .save{border:0;border-radius:10px;padding:11px;background:var(--brand);color:#fff;font-weight:800;margin-top:4px}
+
+  /* ---------- Filters + footer ---------- */
+  .home-filters{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    border:1px solid var(--line);border-radius:16px;background:var(--bg);padding:14px 18px;margin-top:14px}
+  .home-filters h2{margin:0;color:var(--ink-2);font-size:14px;white-space:nowrap}
+  .filter-strip{display:flex;flex:1;flex-wrap:wrap;gap:7px}
+  .home-filters label{display:flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid #dce8e4;
+    border-radius:99px;background:#f8fbfa;font-size:9px;color:#5f716c}
+  .home-filters input{accent-color:var(--brand)}
+  .home-footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;
+    padding:14px 4px;color:var(--muted);font-size:9px}
+  .home-footer a{color:var(--brand);text-decoration:none}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:900px){
+    .home-hero{grid-template-columns:1fr}
+    .year-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .topbar nav{display:none}
+  }
+  @media(max-width:700px){
+    .year-grid{grid-template-columns:1fr}
+    .selected-day-events{grid-template-columns:1fr}
+    .month-cell{min-height:66px}
+    .week-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:600px){
+    .home-new{padding:16px 11px 40px}
+    .hero-date{padding:20px}
+    .hero-date h1{font-size:28px}
+    .calendar-top,.calendar-nav-title{padding:12px}
+    .home-calendar-body{padding:10px}
+    .quick-date{grid-template-columns:1fr 1fr 1fr;gap:5px}
+  }
 </style>
-<style>
-.year-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;padding:4px!important;align-items:start!important}
-.year-month{min-height:226px!important;padding:14px!important;border:1px solid #d8e6e1!important;border-radius:16px!important;background:#fffdf9!important;box-shadow:0 7px 22px rgba(30,76,68,.04)!important}
-.year-month>header{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid #e7efec}.year-month>header h3{margin:0!important;font-size:15px!important;color:#244844}.year-month>header small{font-size:9px;color:#8a9692}
-.mini-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:4px}.mini-weekdays span{text-align:center;font-size:9px;color:#8b9894;font-weight:800}.mini-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}.mini-days span,.mini-days button{min-width:0;min-height:28px;border:0;background:transparent;text-align:center;font:inherit;font-size:10px;padding:4px 2px;border-radius:7px;color:#697873}.mini-days button{cursor:pointer}.mini-days button:hover{background:#e8f5f1;color:#147f79}.mini-days .has-event{color:#98733d;font-weight:900;background:#faf2e1}
-@media(max-width:1000px){.year-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
-@media(max-width:700px){.year-grid{grid-template-columns:1fr!important}}
-.time-services{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:14px;margin-top:14px}.service-card{border:1px solid #d7e5e1;border-radius:20px;background:rgba(255,253,249,.96);box-shadow:0 14px 38px rgba(30,76,68,.06);padding:17px}.service-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;padding-bottom:11px;border-bottom:1px solid #e2ebe8}.service-head span{display:block;font-size:9px;color:#7d8b87}.service-head b{display:block;font-size:15px;color:#294d49;margin-top:2px}.service-date,.clock-live{border:1px solid #d8e8e3;border-radius:99px;padding:5px 8px;background:#f2f9f7;color:#147f79!important;white-space:nowrap}.service-select{display:flex;align-items:center;gap:8px;font-size:9px;color:#73817d;margin-bottom:10px}.service-select select,.world-clock-row select{flex:1;border:1px solid #d8e5e1;border-radius:9px;background:#fff;padding:8px 9px;font:inherit;font-size:10px;color:#36534f}.prayer-times{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.prayer-times>div{padding:9px 8px;border:1px solid #e0eae7;border-radius:10px;background:#fbfdfc}.prayer-times span,.prayer-times b{display:block}.prayer-times span{font-size:8px;color:#7c8b87}.prayer-times b{font-size:13px;color:#294d49;margin-top:3px}.prayer-loading{grid-column:1/-1;text-align:center;color:#84918e;font-size:9px;padding:15px}.main-clock{text-align:center;font-size:42px;letter-spacing:2px;font-weight:700;color:#147f79;padding:12px 0 1px;font-variant-numeric:tabular-nums}.clock-caption{text-align:center;font-size:9px;color:#84918e;margin-bottom:17px}.world-clock-row{display:flex;align-items:center;gap:8px;border-top:1px solid #e2ebe8;padding-top:12px}.world-clock-row b{min-width:82px;text-align:center;font-size:18px;color:#294d49;font-variant-numeric:tabular-nums}
-@media(max-width:1000px){.year-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.time-services{grid-template-columns:1fr}.prayer-times{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:700px){.year-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.prayer-times{grid-template-columns:repeat(2,1fr)}.main-clock{font-size:34px}}
-@media(max-width:460px){.year-grid{grid-template-columns:1fr!important}}
-</style></head>
+</head>
 <body>
+
 <header class="topbar">
-<a class="brand" href="index.html"><span class="brand-logo"><img src="assets/images/logo.png" alt="لوگوی باتقویم"></span><span><b>باتقویم</b><small>بستر تقویم و رویداد</small></span></a>
-<nav><a href="index.html">نخست</a><a href="about.html">معرفی</a><a href="contact.html">تماس</a><a href="events.html">رویدادها</a><a href="notes.html">یادداشت‌ها</a><a href="projects.html">پروژه‌ها</a><a href="tools.html">ابزارها</a><a href="login.html">ورود</a></nav>
-<div class="top-actions"><button id="todayBtn" class="today" type="button">امروز</button><button id="addTop" class="add-btn" type="button">＋ رویداد</button></div>
+  <a class="brand" href="index.html">
+    <span class="brand-logo"><img src="assets/images/logo.png" alt="لوگوی باتقویم"></span>
+    <span><b>باتقویم</b><small>بستر تقویم و رویداد</small></span>
+  </a>
+  <nav>
+    <a href="index.html">نخست</a><a href="about.html">معرفی</a><a href="contact.html">تماس</a>
+    <a href="events.html">رویدادها</a><a href="notes.html">یادداشت‌ها</a><a href="projects.html">پروژه‌ها</a>
+    <a href="tools.html">ابزارها</a><a href="login.html">ورود</a>
+  </nav>
+  <div class="top-actions">
+    <button id="todayBtn" class="today" type="button">امروز</button>
+    <button id="addTop" class="add-btn" type="button">＋ رویداد</button>
+  </div>
 </header>
 
 <main class="home-new">
-<section class="calendar-card" id="calendar">
-<div class="calendar-top">
-<div class="calendar-heading"><span class="mark">۲۴</span><div><b>تقویم باتقویم</b><small>تقویم شمسی و رویدادهای روز</small></div></div>
-<div class="calendar-actions"><button id="prevBtn" type="button" aria-label="قبلی">‹</button><button id="todayBtn2" class="today" type="button">امروز</button><button id="nextBtn" type="button" aria-label="بعدی">›</button></div>
-</div>
-<div class="calendar-nav-title">
-<div class="month-title"><button id="monthPicker" type="button"></button></div>
-<div class="views" role="tablist" aria-label="نمایش تقویم"><button class="view active" data-view="month" type="button">ماه</button><button class="view" data-view="week" type="button">هفته</button><button class="view" data-view="year" type="button">سال</button></div>
-</div>
-<div class="home-calendar-body"><div id="calendarView" aria-live="polite"></div></div>
-</section>
 
-<section class="selected-day-card">
-<div class="selected-day-head">
-<div><span>رویدادهای روز</span><h2 id="selectedTitle">—</h2></div>
-<button id="addSelectedEvent" class="day-add" type="button">＋ ثبت رویداد</button>
-</div>
-<div id="dayEvents" class="selected-day-events"></div>
-</section>
+  <!-- HERO -->
+  <section class="home-hero">
+    <div class="hero-date">
+      <div class="hero-kicker"><i></i><span>BAT A QVIM · CALENDAR</span></div>
+      <h1 id="todayJalali">—</h1>
+      <span class="weekday" id="todayWeekday">—</span>
+      <div class="hero-date-grid">
+        <span>سال شمسی <b id="todayJalaliYear">—</b></span>
+        <span>میلادی <b id="todayGregorian">—</b></span>
+        <span>سال میلادی <b id="todayGregorianYear">—</b></span>
+        <span>قمری <b id="todayLunar">—</b></span>
+      </div>
+    </div>
+    <div class="hero-tools">
+      <div class="hero-tools-head"><b>پرش به تاریخ</b><small>انتخاب سریع</small></div>
+      <div class="quick-date">
+        <label>سال<select id="yearSelect"></select></label>
+        <label>ماه<select id="monthSelect"></select></label>
+        <label>روز<select id="daySelect"></select></label>
+      </div>
+      <button id="openDayBtn" class="primary-action" type="button">مشاهده روز انتخاب‌شده</button>
+    </div>
+  </section>
 
-<section class="home-hero">
-<div class="hero-date">
-<div class="hero-kicker"><i></i><span>BAT A QVIM · CALENDAR</span></div>
-<h1 id="todayJalali">—</h1>
-<span class="weekday" id="todayWeekday">—</span>
-<div class="hero-date-grid">
-<span>سال شمسی <b id="todayJalaliYear">—</b></span>
-<span>میلادی <b id="todayGregorian">—</b></span>
-<span>سال میلادی <b id="todayGregorianYear">—</b></span>
-<span>قمری <b id="todayLunar">—</b></span>
-</div>
-</div>
-<div class="hero-tools">
-<div class="hero-tools-head"><b>پرش به تاریخ</b><small>انتخاب سریع</small></div>
-<div class="quick-date">
-<label>سال<select id="yearSelect"></select></label>
-<label>ماه<select id="monthSelect"></select></label>
-<label>روز<select id="daySelect"></select></label>
-</div>
-<button id="openDayBtn" class="primary-action" type="button">مشاهده روز انتخاب‌شده</button>
-</div>
-</section>
+  <!-- CALENDAR -->
+  <section class="calendar-card" id="calendar">
+    <div class="calendar-top">
+      <div class="calendar-heading">
+        <span class="mark" id="calMark">۲۴</span>
+        <div><b>تقویم باتقویم</b><small>تقویم شمسی و رویدادهای روز</small></div>
+      </div>
+      <div class="calendar-actions">
+        <button id="prevBtn" type="button" aria-label="قبلی">‹</button>
+        <button id="todayBtn2" class="today" type="button">امروز</button>
+        <button id="nextBtn" type="button" aria-label="بعدی">›</button>
+      </div>
+    </div>
 
-<section class="time-services">
-<div class="service-card prayer-card">
-<div class="service-head"><div><span>اوقات شرعی</span><b>اوقات شرعی امروز</b></div><span id="prayerDate" class="service-date">—</span></div>
-<label class="service-select">انتخاب شهر
-<select id="prayerCity">
-<optgroup label="مراکز استان‌ها">
-<option value="Ahvaz">اهواز</option><option value="Arak">اراک</option><option value="Ardabil">اردبیل</option><option value="Bandar Abbas">بندرعباس</option><option value="Birjand">بیرجند</option><option value="Bojnurd">بجنورد</option><option value="Bushehr">بوشهر</option><option value="Shahrekord">شهرکرد</option><option value="Hamadan">همدان</option><option value="Ilam">ایلام</option><option value="Isfahan">اصفهان</option><option value="Kerman">کرمان</option><option value="Kermanshah">کرمانشاه</option><option value="Khorramabad">خرم آباد</option><option value="Mashhad" selected>مشهد</option><option value="Karaj">کرج</option><option value="Qazvin">قزوین</option><option value="Qom">قم</option><option value="Rasht">رشت</option><option value="Sari">ساری</option><option value="Semnan">سمنان</option><option value="Shiraz">شیراز</option><option value="Zahedan">زاهدان</option><option value="Tabriz">تبریز</option><option value="Tehran">تهران</option><option value="Urmia">ارومیه</option><option value="Yasuj">یاسوج</option><option value="Yazd">یزد</option><option value="Zanjan">زنجان</option><option value="Gorgan">گرگان</option><option value="Sanandaj">سنندج</option>
-</optgroup>
-<optgroup label="مراکز مذهبی">
-<option value="Mashhad">مشهد مقدس</option><option value="Qom">قم مقدس</option><option value="Rey">ری · حرم حضرت عبدالعظیم</option><option value="Shiraz">شیراز · حرم شاهچراغ</option><option value="Qom">جمکران · مسجد مقدس جمکران</option>
-</optgroup>
-</select></label>
-<div id="prayerTimes" class="prayer-times"><div class="prayer-loading">در حال دریافت…</div></div>
-</div>
-<div class="service-card clock-card">
-<div class="service-head"><div><span>ساعت</span><b>ساعت ایران و جهان</b></div><span class="clock-live">زنده</span></div>
-<div class="main-clock" id="liveClock">—</div>
-<div class="clock-caption">ساعت محلی ایران</div>
-<div class="world-clock-row"><select id="worldClockCity" aria-label="انتخاب شهر"><option value="Tehran">تهران</option><option value="Baku">باکو</option><option value="Baghdad">بغداد</option><option value="Dubai">دبی</option><option value="Istanbul">استانبول</option><option value="Moscow">مسکو</option><option value="London">لندن</option><option value="Paris">پاریس</option><option value="Tokyo">توکیو</option><option value="NewYork">نیویورک</option></select><b id="worldClockTime">—</b></div>
-</div>
-</section><section class="home-filters">
-<h2>تقویم‌های فعال</h2>
-<div class="filter-strip">
-<label><input type="checkbox" checked data-filter="personal"> شخصی</label>
-<label><input type="checkbox" checked data-filter="public"> عمومی</label>
-<label><input type="checkbox" checked data-filter="project"> پروژه</label>
-<label><input type="checkbox" checked data-filter="national"> ملی</label>
-<label><input type="checkbox" checked data-filter="religious"> مذهبی</label>
-<label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label>
-<label><input type="checkbox" checked data-filter="international"> بین‌المللی</label>
-<label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label>
-</div>
-</section>
-<footer class="home-footer"><span>باتقویم · تقویم و رویداد</span><a href="events.html">مرکز رویدادها</a></footer>
+    <div class="calendar-nav-title">
+      <div class="month-title"><button id="monthPicker" type="button">—</button></div>
+      <div class="views" role="tablist" aria-label="نمایش تقویم">
+        <button class="view active" data-view="month" type="button">ماه</button>
+        <button class="view" data-view="week" type="button">هفته</button>
+        <button class="view" data-view="year" type="button">سال</button>
+      </div>
+    </div>
+
+    <div class="home-calendar-body">
+      <div id="calendarView" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- SELECTED DAY -->
+  <section class="selected-day-card">
+    <div class="selected-day-head">
+      <div><span>رویدادهای روز</span><h2 id="selectedTitle">—</h2></div>
+      <button id="addSelectedEvent" class="day-add" type="button">＋ ثبت رویداد</button>
+    </div>
+    <div id="dayEvents" class="selected-day-events"></div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="home-filters">
+    <h2>تقویم‌های فعال</h2>
+    <div class="filter-strip">
+      <label><input type="checkbox" checked data-filter="personal"> شخصی</label>
+      <label><input type="checkbox" checked data-filter="public"> عمومی</label>
+      <label><input type="checkbox" checked data-filter="project"> پروژه</label>
+      <label><input type="checkbox" checked data-filter="national"> ملی</label>
+      <label><input type="checkbox" checked data-filter="religious"> مذهبی</label>
+      <label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label>
+      <label><input type="checkbox" checked data-filter="international"> بین‌المللی</label>
+      <label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label>
+    </div>
+  </section>
+
+  <footer class="home-footer">
+    <span>باتقویم · تقویم و رویداد</span>
+    <a href="events.html">مرکز رویدادها</a>
+  </footer>
 </main>
 
-<div class="modal" id="eventModal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="closeModal" type="button">×</button><h2 id="modalTitle">ثبت رویداد</h2><form id="eventForm"><label>عنوان رویداد<input id="eventTitle" required maxlength="80" placeholder="عنوان رویداد"></label><label>تاریخ<input id="eventDate" required type="text" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label><label>نوع<select id="eventType"><option value="personal">شخصی</option><option value="public">عمومی</option><option value="project">پروژه</option></select></label><label>زمان<input id="eventTime" type="time"></label><label>توضیح<textarea id="eventNote" rows="3" maxlength="180"></textarea></label><button class="save" type="submit">ذخیره رویداد</button></form></div></div>
+<!-- MODAL -->
+<div class="modal" id="eventModal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="close" id="closeModal" type="button" aria-label="بستن">×</button>
+    <h2 id="modalTitle">ثبت رویداد</h2>
+    <form id="eventForm">
+      <label>عنوان رویداد<input id="eventTitle" required maxlength="80" placeholder="عنوان رویداد"></label>
+      <label>تاریخ<input id="eventDate" required type="text" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label>
+      <label>نوع
+        <select id="eventType">
+          <option value="personal">شخصی</option>
+          <option value="public">عمومی</option>
+          <option value="project">پروژه</option>
+        </select>
+      </label>
+      <label>زمان<input id="eventTime" type="time"></label>
+      <label>توضیح<textarea id="eventNote" rows="3" maxlength="180"></textarea></label>
+      <button class="save" type="submit">ذخیره رویداد</button>
+    </form>
+  </div>
+</div>
 
+<!-- داده‌ها -->
 <script src="assets/data/recurring-events.js"></script>
 <script src="assets/data/events-1404.js"></script>
 <script src="assets/data/events-1405.js"></script>
 <script src="assets/data/events-1406.js"></script>
-<script src="assets/js/app.js?v=20261002-5"></script>
+
+<!-- موتور تقویم پایه: ماه/هفته/سال -->
+<script>
+/* =========================================================
+   تقویم شمسی پایه — بدون وابستگی به کتابخانه خارجی
+   ========================================================= */
+(function () {
+  "use strict";
+
+  const FA_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور",
+                     "مهر","آبان","آذر","دی","بهمن","اسفند"];
+  const FA_WEEKDAYS = ["شنبه","یک‌شنبه","دوشنبه","سه‌شنبه","چهارشنبه","پنج‌شنبه","جمعه"];
+
+  /* --- تبدیل میلادی <-> شمسی (الگوریتم استاندارد) --- */
+  function div(a,b){return Math.floor(a/b)}
+  function g2j(gy,gm,gd){
+    const g_d_m=[0,31,59,90,120,151,181,212,243,273,304,334];
+    let jy = (gy<=1600)?0:979;
+    gy -= (gy<=1600)?621:1600;
+    const gy2 = (gm>2)?(gy+1):gy;
+    let days = (365*gy) + div(gy2+3,4) - div(gy2+99,100) + div(gy2+399,400)
+             - 80 + gd + g_d_m[gm-1];
+    jy += 33*div(days,12053); days %= 12053;
+    jy += 4*div(days,1461);  days %= 1461;
+    if(days>365){ jy += div(days-1,365); days = (days-1)%365; }
+    const jm = (days<186)? 1+div(days,31) : 7+div(days-186,30);
+    const jd = 1 + ((days<186)? days%31 : (days-186)%30);
+    return [jy,jm,jd];
+  }
+  function j2g(jy,jm,jd){
+    let gy = (jy<=979)?621:1600;
+    jy -= (jy<=979)?0:979;
+    let days = (365*jy) + (div(jy,33)*8) + div((jy%33)+3,4) + 78 + jd
+             + ((jm<7)? (jm-1)*31 : (jm-7)*30 + 186);
+    gy += 400*div(days,146097); days %= 146097;
+    if(days>36524){ gy += 100*div(--days,36524); days %= 36524;
+      if(days>=365) days++; }
+    gy += 4*div(days,1461); days %= 1461;
+    if(days>365){ gy += div(days-1,365); days = (days-1)%365; }
+    let gd = days+1;
+    const sal_a=[0,31,(gy%4===0 && gy%100!==0)||(gy%400===0)?29:28,31,30,31,30,31,31,30,31,30,31];
+    let gm=1;
+    for(; gm<=12 && gd>sal_a[gm]; gm++) gd -= sal_a[gm];
+    return [gy,gm,gd];
+  }
+
+  /* --- وضعیت تقویم --- */
+  const state = {
+    view: "month",              // month | week | year
+    today: null,                // [jy,jm,jd]
+    cursor: { jy: 0, jm: 1 },   // ماه/سال در حال نمایش
+    selected: null,             // روز انتخاب‌شده
+    events: {}                  // { "1405/07/10": [ {title,type,time} ] }
+  };
+
+  function fa(n){ return String(n).replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]); }
+  function pad(n){ return n<10? "0"+n : ""+n; }
+  function keyOf(jy,jm,jd){ return `${jy}/${pad(jm)}/${pad(jd)}`; }
+
+  /* --- امروز --- */
+  function computeToday(){
+    const now = new Date();
+    return g2j(now.getFullYear(), now.getMonth()+1, now.getDate());
+  }
+
+  /* --- تعداد روزهای ماه شمسی --- */
+  function daysInJMonth(jy,jm){
+    if (jm <= 6) return 31;
+    if (jm <= 11) return 30;
+    // اسفند
+    const [gy] = j2g(jy, 12, 1);
+    // سال کبیسه شمسی: ۳۳ ساله
+    const leap = ((jy+12) % 33) % 4 === 1; // تقریب متداول
+    return leap ? 30 : 29;
+  }
+
+  /* --- روز هفته ستون (۰=شنبه) --- */
+  function weekdayIndex(jy,jm,jd){
+    const [gy,gm,gd] = j2g(jy,jm,jd);
+    // JS: 0=Sunday ... 6=Saturday  → تبدیل به شنبه=0
+    const wd = new Date(gy, gm-1, gd).getDay(); // 0..6
+    return (wd + 1) % 7;
+  }
+
+  /* --- رندر --- */
+  function renderView(view){
+    state.view = view || state.view;
+    document.querySelectorAll(".views .view").forEach(b=>{
+      b.classList.toggle("active", b.dataset.view === state.view);
+    });
+    const box = document.getElementById("calendarView");
+    if (state.view === "month") box.innerHTML = renderMonth();
+    else if (state.view === "week") box.innerHTML = renderWeek();
+    else box.innerHTML = renderYear();
+
+    // عنوان
+    const title = document.getElementById("monthPicker");
+    if (state.view === "year"){
+      title.textContent = `${FA_MONTHS[0]} تا ${FA_MONTHS[11]} ${fa(state.cursor.jy)}`;
+    } else if (state.view === "week"){
+      const start = weekStart(state.today || state.selected);
+      const end   = addDays(start, 6);
+      title.textContent = `${fa(start[2])} ${FA_MONTHS[start[1]-1]} تا ${fa(end[2])} ${FA_MONTHS[end[1]-1]} ${fa(start[0])}`;
+    } else {
+      title.textContent = `${FA_MONTHS[state.cursor.jm-1]} ${fa(state.cursor.jy)}`;
+    }
+
+    // مارک گوشه
+    const t = state.today || computeToday();
+    document.getElementById("calMark").textContent = fa(t[2]);
+
+    // اتصال کلیک سلول‌ها
+    box.querySelectorAll("[data-day]").forEach(el=>{
+      el.addEventListener("click", ()=>{
+        const [jy,jm,jd] = el.dataset.day.split("/").map(Number);
+        selectDay(jy,jm,jd);
+      });
+    });
+
+    renderSelectedDay();
+  }
+
+  /* --- ماه --- */
+  function renderMonth(){
+    const {jy,jm} = state.cursor;
+    const total = daysInJMonth(jy,jm);
+    const startCol = weekdayIndex(jy,jm,1);
+    const t = state.today || computeToday();
+    let html = `<div class="month-weekdays">${FA_WEEKDAYS.map(d=>`<span>${d}</span>`).join("")}</div>`;
+    html += `<div class="month-grid">`;
+    for (let i=0;i<startCol;i++) html += `<div class="month-cell pad"></div>`;
+    for (let d=1; d<=total; d++){
+      const k = keyOf(jy,jm,d);
+      const evs = state.events[k] || [];
+      const isToday = (t[0]===jy && t[1]===jm && t[2]===d);
+      html += `<div class="month-cell ${isToday?'is-today':''} ${evs.length?'has-event':''}" data-day="${k}">
+        <span class="d">${fa(d)}</span>
+        ${evs.slice(0,2).map(e=>`<span class="ev">${e.title}</span>`).join("")}
+        ${evs.length>2?`<span class="ev">+${fa(evs.length-2)}</span>`:""}
+      </div>`;
+    }
+    html += `</div>`;
+    return html;
+  }
+
+  /* --- هفته --- */
+  function weekStart(d){
+    const idx = weekdayIndex(d[0],d[1],d[2]);
+    return addDays(d, -idx);
+  }
+  function addDays(d, n){
+    let [jy,jm,jd] = d;
+    const step = n>=0 ? 1 : -1;
+    for (let i=0;i<Math.abs(n);i++){
+      jd += step;
+      if (jd < 1){ jm--; if (jm<1){jm=12; jy--;} jd = daysInJMonth(jy,jm); }
+      else if (jd > daysInJMonth(jy,jm)){ jd=1; jm++; if (jm>12){jm=1; jy++;} }
+    }
+    return [jy,jm,jd];
+  }
+  function renderWeek(){
+    const base = state.selected || state.today || computeToday();
+    const start = weekStart(base);
+    const t = state.today || computeToday();
+    let html = `<div class="week-grid">`;
+    for (let i=0;i<7;i++){
+      const d = addDays(start, i);
+      const k = keyOf(d[0],d[1],d[2]);
+      const evs = state.events[k] || [];
+      const isToday = (t[0]===d[0] && t[1]===d[1] && t[2]===d[2]);
+      html += `<div class="week-day ${isToday?'is-today':''}" data-day="${k}">
+        <div class="wd">${FA_WEEKDAYS[weekdayIndex(d[0],d[1],d[2])]}</div>
+        <div class="wn">${fa(d[2])} <small style="font-size:9px;color:#8a9692">${FA_MONTHS[d[1]-1]}</small></div>
+        ${evs.map(e=>`<div class="ev">${e.time?fa(e.time)+' · ':''}${e.title}</div>`).join("")}
+      </div>`;
+    }
+    html += `</div>`;
+    return html;
+  }
+
+  /* --- سال --- */
+  function renderYear(){
+    const jy = state.cursor.jy;
+    const t = state.today || computeToday();
+    let html = `<div class="year-grid">`;
+    for (let m=1;m<=12;m++){
+      const total = daysInJMonth(jy,m);
+      const startCol = weekdayIndex(jy,m,1);
+      html += `<div class="year-month">
+        <header><h3>${FA_MONTHS[m-1]}</h3><small>${fa(jy)}</small></header>
+        <div class="mini-weekdays">${FA_WEEKDAYS.map(d=>`<span>${d[0]}</span>`).join("")}</div>
+        <div class="mini-days">`;
+      for (let i=0;i<startCol;i++) html += `<span class="pad"></span>`;
+      for (let d=1; d<=total; d++){
+        const k = keyOf(jy,m,d);
+        const evs = state.events[k] || [];
+        const isToday = (t[0]===jy && t[1]===m && t[2]===d);
+        html += `<button data-day="${k}" class="${isToday?'is-today':''} ${evs.length?'has-event':''}">${fa(d)}</button>`;
+      }
+      html += `</div></div>`;
+    }
+    html += `</div>`;
+    return html;
+  }
+
+  /* --- انتخاب روز --- */
+  function selectDay(jy,jm,jd){
+    state.selected = [jy,jm,jd];
+    if (state.view === "month"){ state.cursor = {jy,jm}; }
+    if (state.view === "year"){ state.cursor.jy = jy; }
+    renderView();
+  }
+
+  function renderSelectedDay(){
+    const d = state.selected || state.today || computeToday();
+    document.getElementById("selectedTitle").textContent =
+      `${FA_WEEKDAYS[weekdayIndex(d[0],d[1],d[2])]} ${fa(d[2])} ${FA_MONTHS[d[1]-1]} ${fa(d[0])}`;
+    const k = keyOf(d[0],d[1],d[2]);
+    const evs = state.events[k] || [];
+    const box = document.getElementById("dayEvents");
+    if (!evs.length){
+      box.innerHTML = `<div class="empty">برای این روز رویدادی ثبت نشده است.</div>`;
+      return;
+    }
+    box.innerHTML = evs.map((e,i)=>`
+      <div class="event-item ${e.type==='public'||e.type==='national'?'official-event':''}">
+        <button type="button" data-del="${i}" aria-label="حذف">×</button>
+        <b>${e.title}</b>
+        <small>${e.time?fa(e.time)+' · ':''}${typeLabel(e.type)}</small>
+      </div>`).join("");
+    box.querySelectorAll("[data-del]").forEach(b=>{
+      b.addEventListener("click",()=>{
+        const i = +b.dataset.del;
+        evs.splice(i,1);
+        renderView();
+      });
+    });
+  }
+
+  function typeLabel(t){
+    return {personal:"شخصی",public:"عمومی",project:"پروژه",
+            national:"ملی",religious:"مذهبی",iranian:"ایرانی",
+            international:"بین‌المللی",special:"ویژه"}[t] || t;
+  }
+
+  /* --- هدر امروز --- */
+  function renderTodayHeader(){
+    const t = state.today = computeToday();
+    const [gy,gm,gd] = j2g(t[0],t[1],t[2]);
+    document.getElementById("todayJalali").textContent =
+      `${fa(t[2])} ${FA_MONTHS[t[1]-1]} ${fa(t[0])}`;
+    document.getElementById("todayWeekday").textContent =
+      FA_WEEKDAYS[weekdayIndex(t[0],t[1],t[2])];
+    document.getElementById("todayJalaliYear").textContent = fa(t[0]);
+    document.getElementById("todayGregorian").textContent =
+      `${gd} ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][gm-1]} ${gy}`;
+    document.getElementById("todayGregorianYear").textContent = fa(gy);
+    document.getElementById("todayLunar").textContent = "—"; // در صورت نیاز به API
+  }
+
+  /* --- انتخابگرها --- */
+  function buildSelectors(){
+    const ySel = document.getElementById("yearSelect");
+    const mSel = document.getElementById("monthSelect");
+    const dSel = document.getElementById("daySelect");
+    const t = state.today || computeToday();
+    for (let y=t[0]-5; y<=t[0]+5; y++){
+      const o = document.createElement("option");
+      o.value = y; o.textContent = fa(y);
+      ySel.appendChild(o);
+    }
+    FA_MONTHS.forEach((m,i)=>{
+      const o = document.createElement("option");
+      o.value = i+1; o.textContent = m;
+      mSel.appendChild(o);
+    });
+    function fillDays(){
+      const jy = +ySel.value, jm = +mSel.value;
+      const total = daysInJMonth(jy,jm);
+      dSel.innerHTML = "";
+      for (let d=1; d<=total; d++){
+        const o = document.createElement("option");
+        o.value = d; o.textContent = fa(d);
+        dSel.appendChild(o);
+      }
+    }
+    ySel.value = t[0]; mSel.value = t[1]; fillDays(); dSel.value = t[2];
+    ySel.addEventListener("change", fillDays);
+    mSel.addEventListener("change", fillDays);
+    document.getElementById("openDayBtn").addEventListener("click", ()=>{
+      selectDay(+ySel.value, +mSel.value, +dSel.value);
+      document.getElementById("calendar").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  }
+
+  /* --- ناوبری --- */
+  function goPrev(){
+    if (state.view === "month"){
+      state.cursor.jm--; if (state.cursor.jm<1){state.cursor.jm=12; state.cursor.jy--;}
+    } else if (state.view === "year"){
+      state.cursor.jy--;
+    } else {
+      const base = state.selected || state.today || computeToday();
+      state.selected = addDays(base, -7);
+      state.cursor = {jy: state.selected[0], jm: state.selected[1]};
+    }
+    renderView();
+  }
+  function goNext(){
+    if (state.view === "month"){
+      state.cursor.jm++; if (state.cursor.jm>12){state.cursor.jm=1; state.cursor.jy++;}
+    } else if (state.view === "year"){
+      state.cursor.jy++;
+    } else {
+      const base = state.selected || state.today || computeToday();
+      state.selected = addDays(base, 7);
+      state.cursor = {jy: state.selected[0], jm: state.selected[1]};
+    }
+    renderView();
+  }
+  function goToday(){
+    state.today = computeToday();
+    state.cursor = { jy: state.today[0], jm: state.today[1] };
+    state.selected = state.today.slice();
+    renderTodayHeader();
+    renderView();
+  }
+
+  /* --- مودال رویداد --- */
+  function openModal(){
+    const m = document.getElementById("eventModal");
+    const d = state.selected || state.today || computeToday();
+    document.getElementById("eventDate").value = keyOf(d[0],d[1],d[2]).replace(/\//g,"/");
+    document.getElementById("eventTitle").value = "";
+    document.getElementById("eventNote").value = "";
+    m.hidden = false;
+    document.getElementById("eventTitle").focus();
+  }
+  function closeModal(){ document.getElementById("eventModal").hidden = true; }
+
+  /* --- ذخیره‌سازی سبک --- */
+  const STORE_KEY = "bataqvim.events.v1";
+  function loadEvents(){
+    try{
+      const raw = localStorage.getItem(STORE_KEY);
+      if (raw) state.events = JSON.parse(raw) || {};
+    }catch(e){ state.events = {}; }
+
+    // ادغام رویدادهای سراسری (اگر فایل‌های داده آرایه‌ای export کرده باشند)
+    if (Array.isArray(window.EVENTS_1405)) mergeArray(window.EVENTS_1405);
+    if (Array.isArray(window.EVENTS_1404)) mergeArray(window.EVENTS_1404);
+    if (Array.isArray(window.EVENTS_1406)) mergeArray(window.EVENTS_1406);
+  }
+  function mergeArray(arr){
+    arr.forEach(ev=>{
+      if (!ev || !ev.date) return;
+      const k = normalizeKey(ev.date);
+      (state.events[k] = state.events[k] || []).push({
+        title: ev.title || "رویداد",
+        type: ev.type || "public",
+        time: ev.time || ""
+      });
+    });
+  }
+  function normalizeKey(dateStr){
+    // پذیرش "۱۴۰۵/۰۷/۱۰" یا "1405/07/10" یا "1405-07-10"
+    const digits = String(dateStr).replace(/[۰-۹]/g, ch => "۰۱۲۳۴۵۶۷۸۹".indexOf(ch));
+    const m = digits.match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
+    if (!m) return dateStr;
+    return `${+m[1]}/${pad(+m[2])}/${pad(+m[3])}`;
+  }
+  function saveEvents(){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(state.events)); }catch(e){}
+  }
+
+  /* --- راه‌اندازی --- */
+  document.addEventListener("DOMContentLoaded", function(){
+    renderTodayHeader();
+    state.cursor = { jy: state.today[0], jm: state.today[1] };
+    state.selected = state.today.slice();
+    buildSelectors();
+    loadEvents();
+    renderView("month");
+
+    document.querySelectorAll(".views .view").forEach(b=>{
+      b.addEventListener("click", ()=> renderView(b.dataset.view));
+    });
+    document.getElementById("prevBtn").addEventListener("click", goPrev);
+    document.getElementById("nextBtn").addEventListener("click", goNext);
+    document.getElementById("todayBtn").addEventListener("click", goToday);
+    document.getElementById("todayBtn2").addEventListener("click", goToday);
+    document.getElementById("monthPicker").addEventListener("click", ()=>{
+      renderView("year");
+    });
+
+    document.getElementById("addTop").addEventListener("click", openModal);
+    document.getElementById("addSelectedEvent").addEventListener("click", openModal);
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    document.getElementById("eventModal").addEventListener("click", (e)=>{
+      if (e.target.id === "eventModal") closeModal();
+    });
+    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
+
+    document.getElementById("eventForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const title = document.getElementById("eventTitle").value.trim();
+      if (!title) return;
+      const dateK = normalizeKey(document.getElementById("eventDate").value);
+      const type  = document.getElementById("eventType").value;
+      const time  = document.getElementById("eventTime").value;
+      const note  = document.getElementById("eventNote").value.trim();
+      (state.events[dateK] = state.events[dateK] || []).push({
+        title: note ? `${title} — ${note}` : title,
+        type, time
+      });
+      saveEvents();
+      closeModal();
+      state.selected = dateK.split("/").map(Number);
+      state.cursor = { jy: state.selected[0], jm: state.selected[1] };
+      renderView();
+    });
+
+    // فیلترها (نمایشی)
+    document.querySelectorAll(".filter-strip input").forEach(cb=>{
+      cb.addEventListener("change", ()=>{
+        // در صورت نیاز، اینجا می‌توانید رویدادها را بر اساس نوع فیلتر کنید
+      });
+    });
+  });
+})();
+</script>
+
+<!-- ساعت و اوقات شرعی (اختیاری؛ از فایل خودتان استفاده کنید) -->
 <script src="assets/js/home-tools.js"></script>
-<script>document.addEventListener("DOMContentLoaded",()=>document.querySelector("#addSelectedEvent")?.addEventListener("click",()=>document.querySelector("#addTop")?.click()));</script>
+<script src="assets/js/app.js?v=20261002-5"></script>
 <script src="assets/js/site.js?v=20261002-3"></script>
 </body>
 </html>
