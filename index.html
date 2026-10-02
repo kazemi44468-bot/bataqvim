@@ -70,7 +70,16 @@
 .selected-day-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px 14px}.selected-day-events .event-item{position:relative;min-height:66px;margin:0;padding:12px 13px;border:1px solid #e0e9e6;border-radius:12px;background:#fff;box-shadow:none}.selected-day-events .event-item b{display:block;font-size:11px;color:#294d49;line-height:1.9}.selected-day-events .event-item small{display:block;margin-top:3px;color:#7a8985;font-size:9px}.selected-day-events .official-event{background:#fcfaf4;border-color:#e7dcc4}.selected-day-events .event-item>button{position:absolute;left:8px;top:7px;border:0;background:transparent;color:#a26d62;cursor:pointer;font-size:14px}.selected-day-events .empty{grid-column:1/-1;padding:20px;text-align:center;color:#7d8b87;font-size:10px;border:1px dashed #cbded9;border-radius:11px;background:#fbfdfc}
 @media(max-width:700px){.selected-day-events{grid-template-columns:1fr}.selected-day-head{padding:13px}.selected-day-head h2{font-size:15px}}
 </style>
-</head>
+<style>
+.year-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important;padding:4px!important}
+.year-month{min-height:190px!important;padding:12px!important;border:1px solid #d8e6e1!important;border-radius:15px!important;background:#fffdf9!important;box-shadow:0 6px 20px rgba(30,76,68,.035)!important}
+.year-month>header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.year-month>header h3{margin:0!important;font-size:14px!important;color:#244844}.year-month>header small{font-size:8px;color:#8a9692}
+.mini-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:3px}.mini-weekdays span{text-align:center;font-size:8px;color:#8b9894;font-weight:700}.mini-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}.mini-days span,.mini-days button{min-height:24px;border:0;background:transparent;text-align:center;font:inherit;font-size:9px;padding:3px;border-radius:6px;color:#697873}.mini-days button{cursor:pointer}.mini-days button:hover{background:#e8f5f1;color:#147f79}.mini-days .has-event{color:#98733d;font-weight:900;background:#faf2e1}
+.time-services{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:14px;margin-top:14px}.service-card{border:1px solid #d7e5e1;border-radius:20px;background:rgba(255,253,249,.96);box-shadow:0 14px 38px rgba(30,76,68,.06);padding:17px}.service-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;padding-bottom:11px;border-bottom:1px solid #e2ebe8}.service-head span{display:block;font-size:9px;color:#7d8b87}.service-head b{display:block;font-size:15px;color:#294d49;margin-top:2px}.service-date,.clock-live{border:1px solid #d8e8e3;border-radius:99px;padding:5px 8px;background:#f2f9f7;color:#147f79!important;white-space:nowrap}.service-select{display:flex;align-items:center;gap:8px;font-size:9px;color:#73817d;margin-bottom:10px}.service-select select,.world-clock-row select{flex:1;border:1px solid #d8e5e1;border-radius:9px;background:#fff;padding:8px 9px;font:inherit;font-size:10px;color:#36534f}.prayer-times{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.prayer-times>div{padding:9px 8px;border:1px solid #e0eae7;border-radius:10px;background:#fbfdfc}.prayer-times span,.prayer-times b{display:block}.prayer-times span{font-size:8px;color:#7c8b87}.prayer-times b{font-size:13px;color:#294d49;margin-top:3px}.prayer-loading{grid-column:1/-1;text-align:center;color:#84918e;font-size:9px;padding:15px}.main-clock{text-align:center;font-size:42px;letter-spacing:2px;font-weight:700;color:#147f79;padding:12px 0 1px;font-variant-numeric:tabular-nums}.clock-caption{text-align:center;font-size:9px;color:#84918e;margin-bottom:17px}.world-clock-row{display:flex;align-items:center;gap:8px;border-top:1px solid #e2ebe8;padding-top:12px}.world-clock-row b{min-width:82px;text-align:center;font-size:18px;color:#294d49;font-variant-numeric:tabular-nums}
+@media(max-width:1000px){.year-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.time-services{grid-template-columns:1fr}.prayer-times{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.year-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.prayer-times{grid-template-columns:repeat(2,1fr)}.main-clock{font-size:34px}}
+@media(max-width:460px){.year-grid{grid-template-columns:1fr!important}}
+</style></head>
 <body>
 <header class="topbar">
 <a class="brand" href="index.html"><span class="brand-logo"><img src="assets/images/logo.png" alt="لوگوی باتقویم"></span><span><b>باتقویم</b><small>بستر تقویم و رویداد</small></span></a>
@@ -122,7 +131,27 @@
 </div>
 </section>
 
-<section class="home-filters">
+<section class="time-services">
+<div class="service-card prayer-card">
+<div class="service-head"><div><span>اوقات شرعی</span><b>اوقات شرعی امروز</b></div><span id="prayerDate" class="service-date">—</span></div>
+<label class="service-select">انتخاب شهر
+<select id="prayerCity">
+<optgroup label="مراکز استان‌ها">
+<option value="Ahvaz">اهواز</option><option value="Arak">اراک</option><option value="Ardabil">اردبیل</option><option value="Bandar Abbas">بندرعباس</option><option value="Birjand">بیرجند</option><option value="Bojnurd">بجنورد</option><option value="Bushehr">بوشهر</option><option value="Shahrekord">شهرکرد</option><option value="Hamadan">همدان</option><option value="Ilam">ایلام</option><option value="Isfahan">اصفهان</option><option value="Kerman">کرمان</option><option value="Kermanshah">کرمانشاه</option><option value="Khorramabad">خرم آباد</option><option value="Mashhad" selected>مشهد</option><option value="Karaj">کرج</option><option value="Qazvin">قزوین</option><option value="Qom">قم</option><option value="Rasht">رشت</option><option value="Sari">ساری</option><option value="Semnan">سمنان</option><option value="Shiraz">شیراز</option><option value="Zahedan">زاهدان</option><option value="Tabriz">تبریز</option><option value="Tehran">تهران</option><option value="Urmia">ارومیه</option><option value="Yasuj">یاسوج</option><option value="Yazd">یزد</option><option value="Zanjan">زنجان</option><option value="Gorgan">گرگان</option><option value="Sanandaj">سنندج</option>
+</optgroup>
+<optgroup label="مراکز مذهبی">
+<option value="Mashhad">مشهد مقدس</option><option value="Qom">قم مقدس</option><option value="Rey">ری · حرم حضرت عبدالعظیم</option><option value="Shiraz">شیراز · حرم شاهچراغ</option><option value="Qom">جمکران · مسجد مقدس جمکران</option>
+</optgroup>
+</select></label>
+<div id="prayerTimes" class="prayer-times"><div class="prayer-loading">در حال دریافت…</div></div>
+</div>
+<div class="service-card clock-card">
+<div class="service-head"><div><span>ساعت</span><b>ساعت ایران و جهان</b></div><span class="clock-live">زنده</span></div>
+<div class="main-clock" id="liveClock">—</div>
+<div class="clock-caption">ساعت محلی ایران</div>
+<div class="world-clock-row"><select id="worldClockCity" aria-label="انتخاب شهر"><option value="Tehran">تهران</option><option value="Baku">باکو</option><option value="Baghdad">بغداد</option><option value="Dubai">دبی</option><option value="Istanbul">استانبول</option><option value="Moscow">مسکو</option><option value="London">لندن</option><option value="Paris">پاریس</option><option value="Tokyo">توکیو</option><option value="NewYork">نیویورک</option></select><b id="worldClockTime">—</b></div>
+</div>
+</section><section class="home-filters">
 <h2>تقویم‌های فعال</h2>
 <div class="filter-strip">
 <label><input type="checkbox" checked data-filter="personal"> شخصی</label>
