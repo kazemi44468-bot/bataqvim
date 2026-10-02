@@ -8,3 +8,12 @@ a{text-decoration:none;color:inherit}button,input,select,textarea{font-family:in
 @media(max-width:900px){.topbar nav{display:none}.calendar-layout{grid-template-columns:1fr}.side-panel{display:block}.calendar-toolbar{align-items:flex-start}.year-grid{grid-template-columns:repeat(3,1fr)}.year-info{grid-template-columns:1fr}.project-layout{grid-template-columns:1fr}}
 @media(max-width:600px){.topbar{min-height:70px;padding:9px 4%;gap:10px}.brand{margin-left:0}.brand-logo{width:43px;height:43px;border-radius:12px}.brand b{font-size:13px}.brand small{font-size:8px}.top-actions{margin-right:auto}.today{display:none}.add-btn{font-size:10px;min-height:36px;padding:6px 10px}.calendar-shell{padding:27px 3% 15px}.title-area h1{font-size:29px}.title-area p{font-size:10px}.calendar-toolbar{flex-direction:column;gap:15px}.toolbar-actions{align-self:stretch;justify-content:space-between}.calendar-main{padding:9px;border-radius:16px}.viewbar{margin-bottom:10px}.month-title button{font-size:16px}.views button{padding:4px 8px;font-size:10px}.dow{font-size:8px;padding:6px 1px}.day-cell{min-height:76px;padding:4px}.event-dot{font-size:7px;padding:2px 3px}.week-grid{overflow-x:auto;grid-template-columns:repeat(7,minmax(112px,1fr));padding-bottom:4px}.year-grid{grid-template-columns:1fr 1fr}.quick-stats{grid-template-columns:1fr 1fr;margin-left:3%;margin-right:3%;border-radius:12px}.quick-stats div{border-bottom:1px solid var(--line)}.section{padding:55px 5%}.section-title h2{font-size:22px}.project-card h3{font-size:22px}footer{padding:20px 5%;gap:10px;flex-direction:column}}
 @media(max-width:390px){.day-cell{min-height:58px}.event-dot{display:none}.year-grid{grid-template-columns:1fr}.side-panel{padding:14px}.brand small{display:none}}
+
+
+.official-event{border-right:3px solid var(--gold);background:linear-gradient(135deg,rgba(181,139,67,.07),rgba(255,255,255,.5))}
+.source-note{display:block!important;margin-top:12px!important;padding-top:10px;border-top:1px dashed var(--line);line-height:1.9;color:var(--muted);font-size:11px!important}
+.event-dot.national,.event-dot.historical{background:#efe6d6;border-color:#c9a76c}
+.event-dot.religious{background:#eee8f5;border-color:#b8a1cf}
+.event-dot.international{background:#e5edf0;border-color:#9bb6c1}
+.event-dot.iranian{background:#e9efe7;border-color:#a9bea5}
+.event-dot.special{background:#f0eee7;border-color:#b8b39f}
