@@ -15,7 +15,7 @@ const defaults=[
 ];
 let events=[];try{events=JSON.parse(localStorage.getItem("bataqvim-events")||"null")||defaults}catch{events=defaults}
 const sourceNames={project:"پروژه",public:"عمومی",personal:"شخصی",religious:"مذهبی",national:"ملی",iranian:"ایرانی و فرهنگی",historical:"تاریخی",international:"بین‌المللی",special:"تخصصی و ویژه"};
-const official=[...(window.OFFICIAL_EVENTS_1404||[]),...(window.OFFICIAL_EVENTS_1405||[]),...(window.OFFICIAL_EVENTS_1406||[])].map(e=>({...e,official:true}));
+const official=[...(window.BATAQVIM_RECURRING_EVENTS||[]),...(window.OFFICIAL_EVENTS_1404||[]),...(window.OFFICIAL_EVENTS_1405||[]),...(window.OFFICIAL_EVENTS_1406||[])].map(e=>({...e,official:true}));
 function allEvents(){return official.concat(events)}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function typeLabel(t){return sourceNames[t]||t||"رویداد"}
