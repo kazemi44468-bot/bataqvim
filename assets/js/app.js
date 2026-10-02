@@ -15,7 +15,9 @@ const defaults=[
 ];
 let events=[];try{events=JSON.parse(localStorage.getItem("bataqvim-events")||"null")||defaults}catch{events=defaults}
 const sourceNames={project:"پروژه",public:"عمومی",personal:"شخصی",religious:"مذهبی",national:"ملی",iranian:"ایرانی و فرهنگی",historical:"تاریخی",international:"بین‌المللی",special:"تخصصی و ویژه"};
-const official=[...(window.BATAQVIM_RECURRING_EVENTS||[]),...(window.OFFICIAL_EVENTS_1404||[]),...(window.OFFICIAL_EVENTS_1405||[]),...(window.OFFICIAL_EVENTS_1406||[])].map(e=>({...e,official:true}));
+const official=dedupeOfficial([...(window.OFFICIAL_EVENTS_1404||[]),...(window.OFFICIAL_EVENTS_1405||[]),...(window.OFFICIAL_EVENTS_1406||[]),...(window.BATAQVIM_RECURRING_EVENTS||[])]).map(e=>({...e,official:true}));
+function normalizeTitle(t){return String(t||"").toLowerCase().replace(/[َُِّْـ]/g,"").replace(/[يى]/g,"ی").replace(/[ك]/g,"ک").replace(/[ۀة]/g,"ه").replace(/[؛،,:()\-–—]/g," ").replace(/\s+/g," ").trim().replace(/روز پژوهش و فناوری/g,"روز پژوهش").replace(/روز کتاب، کتابخوانی و کتابدار/g,"روز کتاب و کتابخوانی").replace(/بزرگداشت خواجه نصیرالدین طوسی؛ روز مهندسی/g,"روز مهندس").replace(/روز ملی شدن صنعت نفت ایران/g,"ملی شدن صنعت نفت").replace(/پیروزی انقلاب اسلامی ایران/g,"پیروزی انقلاب اسلامی").replace(/روز جهانی مقاومت؛ شهادت سردار سپهبد قاسم سلیمانی/g,"شهادت سردار سلیمانی").replace(/شهادت سردار سپهبد قاسم سلیمانی/g,"شهادت سردار سلیمانی").replace(/بزرگداشت ابوعلی سینا؛ روز پزشک/g,"روز پزشک").replace(/بزرگداشت محمدبن زکریای رازی؛ روز داروسازی/g,"روز داروسازی").replace(/روز شعر و ادب فارسی؛ بزرگداشت استاد شهریار/g,"روز شعر و ادب فارسی");}
+function dedupeOfficial(list){const map=new Map();for(const e of list){const k=String(e.date)+"|"+normalizeTitle(e.title);const old=map.get(k);if(!old||(!e.recurring&&old.recurring))map.set(k,e)}return [...map.values()]}
 function allEvents(){return official.concat(events)}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function typeLabel(t){return sourceNames[t]||t||"رویداد"}
