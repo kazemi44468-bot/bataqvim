@@ -25,20 +25,31 @@ function renderNow(){
   if(m)m.style.transform="translateX(-50%) rotate("+(n.getMinutes()*6+n.getSeconds()*.1)+"deg)";
   if(s)s.style.transform="translateX(-50%) rotate("+(n.getSeconds()*6)+"deg)";
 }
+function provinceById(id){return (window.BATAQVIM_IRAN_PROVINCES||[]).find(p=>p.id===id)||(window.BATAQVIM_IRAN_PROVINCES||[])[0];}
+function fillPrayerCities(){
+  const el=$("#prayerCity"); if(!el||el.dataset.provincesReady)return;
+  const list=window.BATAQVIM_IRAN_PROVINCES||[];
+  el.innerHTML=list.map(p=>'<option value="'+p.id+'">'+p.name+' · '+p.city+'</option>').join('');
+  const saved=localStorage.getItem("bataqvim-prayer-province");
+  if(saved&&list.some(p=>p.id===saved))el.value=saved;
+  else if(list.some(p=>p.id==="tehran"))el.value="tehran";
+  el.dataset.provincesReady="1";
+}
 async function prayer(){
-  const cityEl=$("#prayerCity"),box=$("#prayerTimes");
-  if(!box)return;
-  const city=cityEl?cityEl.value:"Tehran",n=new Date();
-  const day=String(n.getDate()).padStart(2,"0"),month=String(n.getMonth()+1).padStart(2,"0"),year=n.getFullYear();
-  const url="https://api.aladhan.com/v1/timingsByCity/"+day+"-"+month+"-"+year+"?city="+encodeURIComponent(city)+"&country=Iran&method=7";
-  box.innerHTML='<div class="prayer-loading">در حال دریافت…</div>';
+  const cityEl=$("#prayerCity"),box=$("#prayerTimes"); if(!box)return;
+  fillPrayerCities();
+  const province=provinceById(cityEl?cityEl.value:"tehran"); if(!province)return;
+  localStorage.setItem("bataqvim-prayer-province",province.id);
+  const n=new Date(),day=String(n.getDate()).padStart(2,"0"),month=String(n.getMonth()+1).padStart(2,"0"),year=n.getFullYear();
+  const url="https://api.aladhan.com/v1/timings/"+day+"-"+month+"-"+year+"?latitude="+province.lat+"&longitude="+province.lon+"&method=7&school=0";
+  box.innerHTML='<div class="prayer-loading">در حال دریافت اوقات شرعی برای '+province.name+'…</div>';
   try{
-    const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw new Error("HTTP "+r.status);
-    const j=await r.json(),t=j&&j.data&&j.data.timings;if(!t)throw new Error("No timings");
-    const d=$("#prayerDate");if(d){const jj=g2j(year,n.getMonth()+1,n.getDate());d.textContent=fa(jj[0]+"/"+String(jj[1]).padStart(2,"0")+"/"+String(jj[2]).padStart(2,"0"))+" · امروز";}
+    const r=await fetch(url,{cache:"no-store"}); if(!r.ok)throw new Error("HTTP "+r.status);
+    const j=await r.json(),t=j&&j.data&&j.data.timings; if(!t)throw new Error("No timings");
+    const d=$("#prayerDate"); if(d){const jj=g2j(year,n.getMonth()+1,n.getDate());d.textContent=fa(jj[0]+"/"+String(jj[1]).padStart(2,"0")+"/"+String(jj[2]).padStart(2,"0"))+" · "+province.name;}
     const items=[["اذان صبح",t.Fajr],["طلوع آفتاب",t.Sunrise],["اذان ظهر",t.Dhuhr],["اذان عصر",t.Asr],["غروب آفتاب",t.Sunset],["اذان مغرب",t.Maghrib],["عشاء",t.Isha],["نیمه‌شب",t.Midnight]];
     box.innerHTML=items.map(x=>"<div><span>"+x[0]+"</span><b>"+fa(String(x[1]||"—").replace(/[^0-9:]/g,""))+"</b></div>").join("");
-  }catch(e){box.innerHTML='<div class="prayer-loading">اتصال به سرویس اوقات شرعی برقرار نشد.</div>'}
+  }catch(e){box.innerHTML='<div class="prayer-loading">دریافت اوقات شرعی انجام نشد؛ اتصال اینترنت و سرویس را بررسی کنید.</div>'}
 }
 function worldClocks(){
   const city=$("#worldClockCity"),time=$("#worldClockTime");
