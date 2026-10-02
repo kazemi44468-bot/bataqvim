@@ -33,16 +33,17 @@ async function prayer(){
   const url="https://api.aladhan.com/v1/timingsByCity/"+day+"-"+month+"-"+year+"?city="+encodeURIComponent(city)+"&country=Iran&method=7";
   box.innerHTML='<div class="prayer-loading">در حال دریافت…</div>';
   try{
-    const r=await fetch(url,{cache:"no-store"});
-    if(!r.ok)throw new Error("HTTP "+r.status);
-    const j=await r.json(),t=j&&j.data&&j.data.timings;
-    if(!t)throw new Error("No timings");
-    const dateEl=$("#prayerDate"); if(dateEl)dateEl.textContent=fa(day+"/"+month+"/"+year);
+    const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw new Error("HTTP "+r.status);
+    const j=await r.json(),t=j&&j.data&&j.data.timings;if(!t)throw new Error("No timings");
+    const d=$("#prayerDate");if(d)d.textContent=fa(day+"/"+month+"/"+year);
     const items=[["اذان صبح",t.Fajr],["طلوع آفتاب",t.Sunrise],["اذان ظهر",t.Dhuhr],["اذان عصر",t.Asr],["غروب آفتاب",t.Sunset],["اذان مغرب",t.Maghrib],["عشاء",t.Isha],["نیمه‌شب",t.Midnight]];
     box.innerHTML=items.map(x=>"<div><span>"+x[0]+"</span><b>"+fa(String(x[1]||"—").replace(/[^0-9:]/g,""))+"</b></div>").join("");
-  }catch(e){
-    box.innerHTML='<div class="prayer-loading">اتصال به سرویس اوقات شرعی برقرار نشد.</div>';
-  }
+  }catch(e){box.innerHTML='<div class="prayer-loading">اتصال به سرویس اوقات شرعی برقرار نشد.</div>'}
+}
+function worldClocks(){
+  const nodes=document.querySelectorAll(".world-clock-card");
+  const update=()=>nodes.forEach(el=>{try{const z=el.dataset.tz,t=new Intl.DateTimeFormat("fa-IR",{timeZone:z,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(new Date());el.querySelector("strong").textContent=t}catch(e){el.querySelector("strong").textContent="—"}});
+  update();setInterval(update,1000);
 }
 function loadEvents(){
   let ev=[].concat(window.OFFICIAL_EVENTS_1404||[],window.OFFICIAL_EVENTS_1405||[],window.OFFICIAL_EVENTS_1406||[]);
@@ -58,5 +59,6 @@ renderNow();
 setInterval(renderNow,1000);
 const city=$("#prayerCity");if(city)city.addEventListener("change",prayer);
 prayer();
+worldClocks();
 loadEvents();
 })();
