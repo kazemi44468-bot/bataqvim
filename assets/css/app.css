@@ -203,3 +203,23 @@ footer{font-size:11px;background:#f4f9f7;border-color:#d7e3df}
  .date-selector{display:grid;grid-template-columns:1fr 1fr;align-items:end}.date-selector label{min-width:0}.date-selector select{min-width:0;width:100%}.date-open{grid-column:1/-1}
  .day-page{padding:10px 3% 55px}.day-page-head{padding:20px;align-items:flex-start;flex-direction:column}.day-page-head h2{font-size:26px}.day-page-grid{grid-template-columns:1fr}
 }
+
+/* REFINED IRANIAN BACKGROUND */
+body{
+  background:
+    radial-gradient(circle at 12% 18%,rgba(21,154,152,.10) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 88% 72%,rgba(35,75,115,.07) 0 1px,transparent 1.8px),
+    linear-gradient(135deg,#fbfcf9 0%,#f1f8f6 48%,#fafbf8 100%);
+  background-size:28px 28px,36px 36px,100% 100%;
+}
+body:after{
+  opacity:.24;
+  background:
+    radial-gradient(ellipse 95px 45px at 50% 50%,transparent 53%,rgba(21,154,152,.20) 54% 55%,transparent 56%),
+    radial-gradient(ellipse 95px 45px at 50% 50%,transparent 53%,rgba(184,149,82,.12) 54% 55%,transparent 56%),
+    radial-gradient(circle at 50% 50%,rgba(21,154,152,.07) 0 5px,transparent 6px);
+  background-size:190px 110px,190px 110px,190px 110px;
+  background-position:0 0,95px 55px,0 0;
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 10%,#000 90%,transparent 100%);
+}
+.topbar{background:rgba(251,253,251,.96)}
