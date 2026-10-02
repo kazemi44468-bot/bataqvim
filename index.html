@@ -61,6 +61,15 @@
 @media(max-width:900px){.home-hero{grid-template-columns:1fr}.home-filters{align-items:flex-start;flex-direction:column;gap:9px}}
 @media(max-width:600px){.home-new{padding:18px 11px 40px}.hero-date{padding:22px}.hero-date h1{font-size:29px}.calendar-top,.calendar-nav-title{padding:13px}.calendar-top{align-items:flex-start}.calendar-heading .mark{width:36px;height:36px}.calendar-heading b{font-size:14px}.calendar-actions button{padding:7px 8px}.home-calendar-body{padding:10px}.date-selector{flex-wrap:wrap}.date-selector .date-open{margin-right:0}.quick-date{gap:5px}}
 </style>
+
+<style>
+.selected-day-card{margin-top:14px;border:1px solid #d7e5e1;border-radius:20px;background:#fffdf9;box-shadow:0 14px 38px rgba(30,76,68,.06);overflow:hidden}
+.selected-day-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 19px;border-bottom:1px solid #e1ebe8;background:linear-gradient(90deg,#eef7f4,#fffdf9)}
+.selected-day-head span{display:block;color:#7b8a86;font-size:9px;margin-bottom:3px}.selected-day-head h2{margin:0;color:#244844;font-size:18px}
+.day-add{border:1px solid #cfe2dd;background:#edf7f4;color:#147f79;border-radius:9px;padding:8px 11px;font:inherit;font-size:9px;cursor:pointer}.day-add:hover{background:#e2f1ed}
+.selected-day-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px 14px}.selected-day-events .event-item{position:relative;min-height:66px;margin:0;padding:12px 13px;border:1px solid #e0e9e6;border-radius:12px;background:#fff;box-shadow:none}.selected-day-events .event-item b{display:block;font-size:11px;color:#294d49;line-height:1.9}.selected-day-events .event-item small{display:block;margin-top:3px;color:#7a8985;font-size:9px}.selected-day-events .official-event{background:#fcfaf4;border-color:#e7dcc4}.selected-day-events .event-item>button{position:absolute;left:8px;top:7px;border:0;background:transparent;color:#a26d62;cursor:pointer;font-size:14px}.selected-day-events .empty{grid-column:1/-1;padding:20px;text-align:center;color:#7d8b87;font-size:10px;border:1px dashed #cbded9;border-radius:11px;background:#fbfdfc}
+@media(max-width:700px){.selected-day-events{grid-template-columns:1fr}.selected-day-head{padding:13px}.selected-day-head h2{font-size:15px}}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -70,6 +79,26 @@
 </header>
 
 <main class="home-new">
+<section class="calendar-card" id="calendar">
+<div class="calendar-top">
+<div class="calendar-heading"><span class="mark">۲۴</span><div><b>تقویم باتقویم</b><small>تقویم شمسی و رویدادهای روز</small></div></div>
+<div class="calendar-actions"><button id="prevBtn" type="button" aria-label="قبلی">‹</button><button id="todayBtn2" class="today" type="button">امروز</button><button id="nextBtn" type="button" aria-label="بعدی">›</button></div>
+</div>
+<div class="calendar-nav-title">
+<div class="month-title"><button id="monthPicker" type="button"></button></div>
+<div class="views" role="tablist" aria-label="نمایش تقویم"><button class="view active" data-view="month" type="button">ماه</button><button class="view" data-view="week" type="button">هفته</button><button class="view" data-view="year" type="button">سال</button></div>
+</div>
+<div class="home-calendar-body"><div id="calendarView" aria-live="polite"></div></div>
+</section>
+
+<section class="selected-day-card">
+<div class="selected-day-head">
+<div><span>رویدادهای روز</span><h2 id="selectedTitle">—</h2></div>
+<button id="addSelectedEvent" class="day-add" type="button">＋ ثبت رویداد</button>
+</div>
+<div id="dayEvents" class="selected-day-events"></div>
+</section>
+
 <section class="home-hero">
 <div class="hero-date">
 <div class="hero-kicker"><i></i><span>BAT A QVIM · CALENDAR</span></div>
@@ -93,22 +122,20 @@
 </div>
 </section>
 
-<section class="calendar-card" id="calendar">
-<div class="calendar-top">
-<div class="calendar-heading"><span class="mark">۲۴</span><div><b>تقویم باتقویم</b><small>تقویم شمسی، رویدادها و برنامه‌ریزی</small></div></div>
-<div class="calendar-actions"><button id="prevBtn" type="button" aria-label="قبلی">‹</button><button id="todayBtn2" class="today" type="button">امروز</button><button id="nextBtn" type="button" aria-label="بعدی">›</button></div>
+<section class="home-filters">
+<h2>تقویم‌های فعال</h2>
+<div class="filter-strip">
+<label><input type="checkbox" checked data-filter="personal"> شخصی</label>
+<label><input type="checkbox" checked data-filter="public"> عمومی</label>
+<label><input type="checkbox" checked data-filter="project"> پروژه</label>
+<label><input type="checkbox" checked data-filter="national"> ملی</label>
+<label><input type="checkbox" checked data-filter="religious"> مذهبی</label>
+<label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label>
+<label><input type="checkbox" checked data-filter="international"> بین‌المللی</label>
+<label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label>
 </div>
-<div class="calendar-nav-title"><div class="month-title"><button id="monthPicker" type="button"></button></div><div class="views" role="tablist" aria-label="نمایش تقویم"><button class="view active" data-view="month" type="button">ماه</button><button class="view" data-view="week" type="button">هفته</button><button class="view" data-view="year" type="button">سال</button></div></div>
-<div class="home-calendar-body"><div id="calendarView" aria-live="polite"></div></div>
 </section>
-
-<section class="home-lower">
-<div class="home-agenda"><h2>رویدادهای نزدیک</h2><p>رویدادهای تقویم</p><div id="monthAgendaList"></div><a class="agenda-link" href="events.html"><b>آرشیو رویدادها</b><span>مشاهده همه ←</span></a></div>
-<div class="home-filters"><h2>تقویم‌های فعال</h2><div class="filter-strip">
-<label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label><label><input type="checkbox" checked data-filter="national"> ملی</label><label><input type="checkbox" checked data-filter="religious"> مذهبی</label><label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label><label><input type="checkbox" checked data-filter="international"> بین‌المللی</label><label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label>
-</div></div>
-</section>
-<footer class="home-footer"><span>باتقویم · تقویم و رویداد</span><a href="doc/">مستندات</a></footer>
+<footer class="home-footer"><span>باتقویم · تقویم و رویداد</span><a href="events.html">مرکز رویدادها</a></footer>
 </main>
 
 <div class="modal" id="eventModal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="closeModal" type="button">×</button><h2 id="modalTitle">ثبت رویداد</h2><form id="eventForm"><label>عنوان رویداد<input id="eventTitle" required maxlength="80" placeholder="عنوان رویداد"></label><label>تاریخ<input id="eventDate" required type="text" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label><label>نوع<select id="eventType"><option value="personal">شخصی</option><option value="public">عمومی</option><option value="project">پروژه</option></select></label><label>زمان<input id="eventTime" type="time"></label><label>توضیح<textarea id="eventNote" rows="3" maxlength="180"></textarea></label><button class="save" type="submit">ذخیره رویداد</button></form></div></div>
@@ -119,6 +146,7 @@
 <script src="assets/data/events-1406.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/home-tools.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>document.querySelector("#addSelectedEvent")?.addEventListener("click",()=>document.querySelector("#addTop")?.click()));</script>
 <script src="assets/js/site.js?v=20261002-3"></script>
 </body>
 </html>
