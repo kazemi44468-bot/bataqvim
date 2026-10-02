@@ -228,3 +228,5 @@ body:after{display:none}
  .all-event-content b{font-size:12px}.all-event-content small{font-size:9px}
  .all-event-date b{font-size:18px}
 }
+
+.page-title{font-family:VazirmatnLocal,Tahoma,sans-serif;font-size:32px;margin:2px 0;color:var(--ink)}.standalone-day{min-height:calc(100vh - 180px);padding-top:45px}.standalone-day .day-page-head h1{font-family:VazirmatnLocal,Tahoma,sans-serif}.all-event-row{display:grid;text-decoration:none}.all-event-row:hover{text-decoration:none}
