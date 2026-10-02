@@ -17,7 +17,7 @@ function age(){const a=parts($("#birthDate").value);if(!validJ(a))return show("#
 function provinceById(id){return (window.BATAQVIM_IRAN_PROVINCES||[]).find(p=>p.id===id)||(window.BATAQVIM_IRAN_PROVINCES||[])[0];}
 function fillToolProvinces(){
   const el=$("#toolPrayerProvince"); if(!el||el.dataset.ready)return;
-  el.innerHTML=(window.BATAQVIM_IRAN_PROVINCES||[]).map(p=>'<option value="'+p.id+'">'+p.name+' · '+p.city+'</option>').join('');
+  el.innerHTML=(window.BATAQVIM_IRAN_PROVINCES||[]).map(p=>'<option value="'+p.id+'">'+p.city+'</option>').join('');
   const saved=localStorage.getItem("bataqvim-prayer-province"); if(saved&&provinceById(saved))el.value=saved;
   el.dataset.ready="1";
 }
@@ -27,7 +27,7 @@ async function toolPrayer(){
   const n=new Date(),y=n.getFullYear(),m=n.getMonth()+1,d=n.getDate(),url="https://api.aladhan.com/v1/timings/"+String(d).padStart(2,"0")+"-"+String(m).padStart(2,"0")+"-"+y+"?latitude="+p.lat+"&longitude="+p.lon+"&method=7&school=0";
   box.innerHTML='<div class="prayer-loading">در حال دریافت…</div>';
   try{const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw 0;const j=await r.json(),t=j?.data?.timings;if(!t)throw 0;
-    $("#toolPrayerDate").textContent=fa(g2j(y,m,d).join("/"))+" · "+p.name;
+    $("#toolPrayerDate").textContent=fa(g2j(y,m,d).join("/"))+" · "+p.city;
     box.innerHTML=[["اذان صبح",t.Fajr],["طلوع آفتاب",t.Sunrise],["اذان ظهر",t.Dhuhr],["اذان عصر",t.Asr],["غروب آفتاب",t.Sunset],["اذان مغرب",t.Maghrib],["عشاء",t.Isha],["نیمه‌شب",t.Midnight]].map(x=>"<div><span>"+x[0]+"</span><b>"+fa(String(x[1]||"—").replace(/[^0-9:]/g,""))+"</b></div>").join("");
   }catch(e){box.innerHTML='<div class="prayer-loading">دریافت اوقات شرعی انجام نشد.</div>'}
 }
