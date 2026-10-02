@@ -271,22 +271,24 @@ body{
   background-attachment:fixed;
   background-repeat:repeat;
 }
+/* Only the unified navigation container receives backbox.png. */
 .topbar{
-  background-image:linear-gradient(rgba(252,253,250,.90),rgba(252,253,250,.90)),url('../images/backbox.png');
+  background:rgba(252,253,250,.94);
+  background-image:none;
+}
+.topbar nav{
+  background-image:linear-gradient(rgba(255,255,255,.84),rgba(255,255,255,.84)),url('../images/backbox.png');
   background-size:auto;
   background-position:center;
   background-repeat:repeat;
 }
 .topbar nav a,.today,.outline,.toolbar-actions button,.views button,.side-head button,.date-open,
 .tool-card>.outline,.converter-tab{
-  background-image:linear-gradient(rgba(255,255,255,.84),rgba(255,255,255,.84)),url('../images/backbox.png');
-  background-size:auto;
-  background-position:center;
-  background-repeat:repeat;
+  background-image:none;
 }
 .topbar nav a:hover,.today:hover,.outline:hover,.toolbar-actions button:hover,.views button:hover,
 .tool-card>.outline:hover,.converter-tab:hover{
-  background-image:linear-gradient(rgba(232,247,243,.90),rgba(232,247,243,.90)),url('../images/backbox.png');
+  background-image:none;
 }
 .add-btn,.save,.auth-submit,.contact-form-actions .add-btn{
   background-image:linear-gradient(135deg,rgba(13,112,111,.96),rgba(21,154,152,.94)),url('../images/backbox.png');
