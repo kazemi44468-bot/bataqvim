@@ -230,3 +230,6 @@ body:after{display:none}
 }
 
 .page-title{font-family:VazirmatnLocal,Tahoma,sans-serif;font-size:32px;margin:2px 0;color:var(--ink)}.standalone-day{min-height:calc(100vh - 180px);padding-top:45px}.standalone-day .day-page-head h1{font-family:VazirmatnLocal,Tahoma,sans-serif}.all-event-row{display:grid;text-decoration:none}.all-event-row:hover{text-decoration:none}
+
+/* CONTENT PAGES */
+.content-grid,.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.contact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.content-card{padding:22px;background:#fff;border:1px solid #d7e3df;border-radius:18px;box-shadow:0 8px 24px rgba(20,65,60,.04)}.content-card h3{margin:0 0 10px;font-size:17px}.content-card p,.lead-text{margin:0;color:#63736f;line-height:2;font-size:13px}.lead-text{max-width:850px;background:#f4f9f7;border:1px solid #d9e7e3;border-radius:16px;padding:18px 20px}.intro-page,.contact-page{scroll-margin-top:90px}.events-intro,.day-intro{padding-bottom:10px}.contact-page{padding-top:70px}@media(max-width:700px){.content-grid,.contact-grid{grid-template-columns:1fr}.content-card{padding:18px}}
