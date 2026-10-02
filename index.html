@@ -48,17 +48,17 @@
 .date-selector label{display:flex;align-items:center;gap:5px;color:#71817c;font-size:9px}
 .date-selector select{border:1px solid #d8e5e1;background:#fff;border-radius:8px;padding:6px 8px;font:inherit;font-size:9px;color:#38514d}
 .date-selector .date-open{margin-right:auto;border:0;border-radius:8px;padding:7px 11px;background:#e9f4f1;color:#147f79;font:inherit;font-size:9px;cursor:pointer}
-.home-lower{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:14px;margin-top:14px}
+.home-lower{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
 .home-agenda,.home-filters{border:1px solid #dbe7e3;border-radius:18px;background:#fffdf9;padding:18px}
 .home-agenda h2,.home-filters h2{margin:0;color:#284e49;font-size:15px}
 .home-agenda>p{margin:4px 0 13px;color:#8a9692;font-size:9px}
 .agenda-link{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid #e3ebe8;border-radius:10px;margin-bottom:7px;background:#fff}
 .agenda-link b{font-size:10px;color:#395550}.agenda-link span{font-size:9px;color:#8b9793}
-.home-filters label{display:flex;align-items:center;gap:7px;margin-top:9px;font-size:10px;color:#5f716c}
+.home-filters{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.home-filters h2{white-space:nowrap}.filter-strip{display:flex;flex:1;flex-wrap:wrap;gap:7px}.home-filters label{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid #dce8e4;border-radius:99px;background:#f8fbfa;font-size:9px;color:#5f716c}
 .home-filters input{accent-color:#147f79}
 .home-footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding:15px 18px;color:#7a8984;font-size:9px}
 .home-footer a{color:#147f79;text-decoration:none}
-@media(max-width:900px){.home-hero{grid-template-columns:1fr}.home-lower{grid-template-columns:1fr}}
+@media(max-width:900px){.home-hero{grid-template-columns:1fr}.home-filters{align-items:flex-start;flex-direction:column;gap:9px}}
 @media(max-width:600px){.home-new{padding:18px 11px 40px}.hero-date{padding:22px}.hero-date h1{font-size:29px}.calendar-top,.calendar-nav-title{padding:13px}.calendar-top{align-items:flex-start}.calendar-heading .mark{width:36px;height:36px}.calendar-heading b{font-size:14px}.calendar-actions button{padding:7px 8px}.home-calendar-body{padding:10px}.date-selector{flex-wrap:wrap}.date-selector .date-open{margin-right:0}.quick-date{gap:5px}}
 </style>
 </head>
@@ -103,8 +103,10 @@
 </section>
 
 <section class="home-lower">
-<div class="home-agenda"><h2>رویدادهای نزدیک</h2><p>رویدادهای تقویم را از نمای روز و آرشیو رویدادها دنبال کنید.</p><div id="monthAgendaList"></div><a class="agenda-link" href="events.html"><b>آرشیو رویدادها</b><span>مشاهده همه ←</span></a></div>
-<aside class="home-filters"><h2>تقویم‌های فعال</h2><label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label><label><input type="checkbox" checked data-filter="national"> ملی</label><label><input type="checkbox" checked data-filter="religious"> مذهبی</label><label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label><label><input type="checkbox" checked data-filter="international"> بین‌المللی</label><label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label></aside>
+<div class="home-agenda"><h2>رویدادهای نزدیک</h2><p>رویدادهای تقویم</p><div id="monthAgendaList"></div><a class="agenda-link" href="events.html"><b>آرشیو رویدادها</b><span>مشاهده همه ←</span></a></div>
+<div class="home-filters"><h2>تقویم‌های فعال</h2><div class="filter-strip">
+<label><input type="checkbox" checked data-filter="personal"> شخصی</label><label><input type="checkbox" checked data-filter="public"> عمومی</label><label><input type="checkbox" checked data-filter="project"> پروژه</label><label><input type="checkbox" checked data-filter="national"> ملی</label><label><input type="checkbox" checked data-filter="religious"> مذهبی</label><label><input type="checkbox" checked data-filter="iranian"> ایرانی و فرهنگی</label><label><input type="checkbox" checked data-filter="international"> بین‌المللی</label><label><input type="checkbox" checked data-filter="special"> تخصصی و ویژه</label>
+</div></div>
 </section>
 <footer class="home-footer"><span>باتقویم · تقویم و رویداد</span><a href="doc/">مستندات</a></footer>
 </main>
