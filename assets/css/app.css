@@ -266,22 +266,23 @@ body:after{display:none}
 /* VISUAL ASSETS + GLOBAL BACK TO TOP */
 body{
   background-image:linear-gradient(rgba(247,251,249,.72),rgba(247,251,249,.72)),url('../images/bg10.jpg');
-  background-size:cover;
+  background-size:auto;
   background-position:center top;
   background-attachment:fixed;
-  background-repeat:no-repeat;
+  background-repeat:repeat;
 }
 .topbar{
   background-image:linear-gradient(rgba(252,253,250,.90),rgba(252,253,250,.90)),url('../images/backbox.png');
-  background-size:cover;
+  background-size:auto;
   background-position:center;
-  background-repeat:no-repeat;
+  background-repeat:repeat;
 }
 .topbar nav a,.today,.outline,.toolbar-actions button,.views button,.side-head button,.date-open,
 .tool-card>.outline,.converter-tab{
   background-image:linear-gradient(rgba(255,255,255,.84),rgba(255,255,255,.84)),url('../images/backbox.png');
-  background-size:cover;
+  background-size:auto;
   background-position:center;
+  background-repeat:repeat;
 }
 .topbar nav a:hover,.today:hover,.outline:hover,.toolbar-actions button:hover,.views button:hover,
 .tool-card>.outline:hover,.converter-tab:hover{
@@ -289,19 +290,21 @@ body{
 }
 .add-btn,.save,.auth-submit,.contact-form-actions .add-btn{
   background-image:linear-gradient(135deg,rgba(13,112,111,.96),rgba(21,154,152,.94)),url('../images/backbox.png');
-  background-size:cover;
+  background-size:auto;
   background-position:center;
+  background-repeat:repeat;
 }
 footer{
   background-image:linear-gradient(rgba(244,249,247,.91),rgba(244,249,247,.91)),url('../images/fback.png');
-  background-size:cover;
+  background-size:auto;
   background-position:center;
+  background-repeat:repeat;
 }
 .back-to-top{
   position:fixed;left:22px;bottom:22px;z-index:80;
   width:48px;height:48px;border:1px solid #a9cbc5;border-radius:14px;
   background-image:linear-gradient(rgba(255,255,255,.90),rgba(255,255,255,.90)),url('../images/backbox.png');
-  background-size:cover;background-position:center;
+  background-size:auto;background-position:center;background-repeat:repeat;
   color:var(--turq-dark);box-shadow:0 12px 28px rgba(20,65,60,.16);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:0;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);
