@@ -41,9 +41,10 @@ async function prayer(){
   }catch(e){box.innerHTML='<div class="prayer-loading">اتصال به سرویس اوقات شرعی برقرار نشد.</div>'}
 }
 function worldClocks(){
-  const nodes=document.querySelectorAll(".world-clock-card");
-  const update=()=>nodes.forEach(el=>{try{const z=el.dataset.tz,t=new Intl.DateTimeFormat("fa-IR",{timeZone:z,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(new Date());el.querySelector("strong").textContent=t}catch(e){el.querySelector("strong").textContent="—"}});
-  update();setInterval(update,1000);
+  const city=$("#worldClockCity"),time=$("#worldClockTime");
+  if(!city||!time)return;
+  const update=()=>{try{time.textContent=new Intl.DateTimeFormat("fa-IR",{timeZone:city.value,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(new Date())}catch(e){time.textContent="—"}};
+  city.addEventListener("change",update);update();setInterval(update,1000);
 }
 function loadEvents(){
   let ev=[].concat(window.OFFICIAL_EVENTS_1404||[],window.OFFICIAL_EVENTS_1405||[],window.OFFICIAL_EVENTS_1406||[]);
