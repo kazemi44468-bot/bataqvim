@@ -45,16 +45,3 @@ $("#daySelect")?.addEventListener("change",e=>{state.d=+e.target.value;state.sel
 $("#openDayBtn")?.addEventListener("click",()=>location.href="day.html?date="+encodeURIComponent(state.selected));
 render();
 })();
-/* week/year calendar refinement */
-.week-grid{display:grid;grid-template-columns:repeat(7,minmax(150px,1fr));gap:8px;overflow-x:auto;padding:2px 2px 10px}
-.week-col{min-width:150px;min-height:430px;border:1px solid var(--line);border-radius:14px;background:#fffdf9;overflow:hidden;padding:0;display:flex;flex-direction:column}
-.week-day-head{padding:13px 11px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#eef7f4,#fffdf9);display:grid;grid-template-columns:1fr auto;align-items:center;gap:3px 7px}
-.week-day-head span{font-size:12px;font-weight:800;color:var(--turq-dark)}.week-day-head b{font-size:19px;color:var(--ink);grid-row:span 2}.week-day-head small{font-size:9px;color:var(--muted)}
-.week-events{padding:10px;display:flex;flex-direction:column;gap:7px;overflow:auto}.week-events .event-dot{display:block;width:100%;min-height:42px;text-align:right;white-space:normal;line-height:1.8;padding:8px 9px;border-radius:9px;cursor:pointer}.week-events .event-dot strong{font-size:9px}
-.year-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.year-month{min-width:0;border:1px solid var(--line);border-radius:14px;padding:12px;background:#fffdf9;box-shadow:0 5px 18px rgba(30,70,65,.035)}
-.year-month>header{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}.year-month>header h3{margin:0;font-size:15px;color:var(--ink)}.year-month>header small{font-size:9px;color:var(--muted)}
-.mini-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:3px}.mini-weekdays span{text-align:center;font-size:8px;color:#87938f;font-weight:700}
-.mini-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}.mini-days span,.mini-days button{min-width:0;min-height:25px;border:0;background:transparent;text-align:center;font:inherit;font-size:9px;padding:3px;border-radius:6px;color:#6f7c78}.mini-days button{cursor:pointer}.mini-days button:hover{background:var(--turq-soft);color:var(--turq-dark)}.mini-days .has-event{color:#92743f;font-weight:900;background:#faf3e4}
-@media(max-width:1000px){.week-grid{grid-template-columns:repeat(7,minmax(135px,1fr));overflow-x:auto}.year-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.week-grid{grid-template-columns:repeat(7,minmax(130px,1fr));overflow-x:auto}.week-col{min-width:130px;min-height:360px}.week-day-head{padding:10px 8px}.week-day-head span{font-size:11px}.week-day-head b{font-size:17px}.year-grid{grid-template-columns:1fr}.year-month{padding:10px}.mini-days span,.mini-days button{min-height:24px}}
