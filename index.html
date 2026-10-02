@@ -21,6 +21,12 @@
   <div class="calendar-layout">
     <section class="calendar-main">
       <div class="viewbar"><div class="month-title"><button id="monthPicker" type="button"></button></div><div class="views" role="tablist"><button class="view active" data-view="month" type="button">ماه</button><button class="view" data-view="week" type="button">هفته</button><button class="view" data-view="year" type="button">سال</button></div></div>
+      <div class="date-selector" aria-label="انتخاب تاریخ">
+        <label>سال<select id="yearSelect"></select></label>
+        <label>ماه<select id="monthSelect"></select></label>
+        <label>روز<select id="daySelect"></select></label>
+        <button id="openDayBtn" class="date-open" type="button">مشاهده روز</button>
+      </div>
       <div id="calendarView" aria-live="polite"></div>
     </section>
     <aside class="side-panel">
@@ -30,7 +36,10 @@
     </aside>
   </div>
 </section>
-<section class="quick-stats" id="agenda"><div><b id="eventCount">۰</b><span>رویداد ثبت‌شده</span></div><div><b>۳</b><span>تقویم فعال نمونه</span></div><div><b>شمسی</b><span>تقویم پایه</span></div><div><b>روز · هفته · ماه · سال</b><span>نماهای تقویم</span></div></section>
+<section class="day-page" id="dayPage" hidden>
+  <div class="day-page-head"><div><span class="eyebrow">DAILY PAGE</span><h2 id="dayPageTitle">صفحه روز</h2><p id="dayPageMeta"></p></div><button id="backCalendar" class="outline" type="button">بازگشت به تقویم</button></div>
+  <div class="day-page-grid"><article class="day-main-card"><div class="day-symbol">روز</div><div id="dayPageEvents"></div></article><aside class="day-info-card"><b>رویداد جدید</b><p>برای این روز رویداد، جلسه، یادآوری یا نقطه عطف ثبت کنید.</p><button id="dayAddBtn" class="add-btn" type="button">＋ افزودن رویداد</button></aside></div>
+</section><section class="quick-stats" id="agenda"><div><b id="eventCount">۰</b><span>رویداد ثبت‌شده</span></div><div><b>۳</b><span>تقویم فعال نمونه</span></div><div><b>شمسی</b><span>تقویم پایه</span></div><div><b>روز · هفته · ماه · سال</b><span>نماهای تقویم</span></div></section>
 <section class="section" id="year"><div class="section-title"><span>۰۱</span><div><small>سالنامه</small><h2 class="calligraphy">سال را یکجا ببینید</h2></div></div><div class="year-info"><div><b>مناسبت‌ها</b><p>تقویم می‌تواند مناسبت‌های ملی، مذهبی، جهانی و رویدادهای اختصاصی هر پروژه را کنار برنامه شخصی نمایش دهد.</p></div><div><b>نقاط عطف</b><p>موعدها، جلسات، انتشارها و مراحل پروژه روی یک محور زمانی مشترک قرار می‌گیرند.</p></div><div><b>یادآوری</b><p>رویدادهای تکرارشونده و یادآوری‌های چندمرحله‌ای، بخش بعدی هسته برنامه‌ریزی هستند.</p></div></div></section>
 <section class="section" id="projects"><div class="section-title"><span>۰۲</span><div><small>معماری محصول</small><h2 class="calligraphy">هر پروژه، تقویم خودش را دارد</h2></div></div><div class="project-layout"><div class="project-card"><span>PROJECT CALENDAR</span><h3>تقویم اختصاصی پروژه</h3><p>هر پروژه می‌تواند رویدادها، جلسات، مراحل، مهلت‌ها، انتشارها و نقاط عطف خود را در یک تقویم مستقل مدیریت کند؛ بدون ساختن دوباره هسته تقویم.</p><div class="chips"><i>رویداد</i><i>مرحله</i><i>موعد</i><i>جلسه</i><i>یادآوری</i></div></div><div class="project-list"><div>تقویم سازمانی <b>→</b></div><div>تقویم آموزشی <b>→</b></div><div>تقویم فرهنگی <b>→</b></div><div>تقویم شهدا <b>→</b></div></div></div></section>
 </main>
