@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ابزارهای تاریخ و زمان | تقویم</title>
+<meta name="description" content="ابزارهای تبدیل تاریخ، تاریخ قمری، محاسبه فاصله دو تاریخ و سن.">
+<link rel="icon" href="assets/images/logo.png" type="image/png"><link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<header class="topbar">
+<a class="brand" href="index.html"><span class="brand-logo"><img src="assets/images/logo.png" alt="لوگوی تقویم"></span><span><b>تقویم</b><small>بستر تقویم و رویداد</small></span></a>
+<nav><a href="index.html">نخست</a><a href="about.html">معرفی</a><a href="contact.html">تماس</a><a href="events.html">رویدادها</a><a class="active" href="tools.html">ابزارها</a><a href="login.html">ورود</a></nav>
+</header>
+<main>
+<section class="section tools-page">
+<div class="section-title"><span>مرکز ابزار</span><div><small>تاریخ و زمان</small><h1 class="page-title">ابزارهای تقویم</h1></div></div>
+<p class="lead-text">ابزارهای کاربردی برای تبدیل تاریخ، مشاهده تاریخ قمری و محاسبه فاصله زمانی و سن؛ بدون خروج از بستر تقویم.</p>
+<div class="tools-grid">
+<article class="tool-card">
+<span class="tool-kicker">۰۱ · تبدیل</span><h2>تبدیل تاریخ</h2><p>تاریخ شمسی و میلادی را به یکدیگر تبدیل کنید و تاریخ قمری متناظر را نیز ببینید.</p>
+<div class="tool-form two-cols">
+<label>سال شمسی<input id="toolJY" inputmode="numeric" placeholder="۱۴۰۵"></label><label>ماه<input id="toolJM" inputmode="numeric" placeholder="۰۷"></label><label>روز<input id="toolJD" inputmode="numeric" placeholder="۱۰"></label>
+</div>
+<button class="add-btn" id="toolConvertJ">تبدیل شمسی</button>
+<div class="tool-result" id="toolConvertJResult">نتیجه اینجا نمایش داده می‌شود.</div>
+<hr>
+<div class="tool-form two-cols"><label>سال میلادی<input id="toolGY" inputmode="numeric" placeholder="۲۰۲۶"></label><label>ماه<input id="toolGM" inputmode="numeric" placeholder="۱۰"></label><label>روز<input id="toolGD" inputmode="numeric" placeholder="۰۲"></label></div>
+<button class="outline" id="toolConvertG">تبدیل میلادی</button>
+<div class="tool-result" id="toolConvertGResult">نتیجه اینجا نمایش داده می‌شود.</div>
+</article>
+<article class="tool-card">
+<span class="tool-kicker">۰۲ · قمری</span><h2>تاریخ قمری امروز</h2><p>تاریخ قمری بر پایه تقویم <b>ام‌القری</b> در مرورگر نمایش داده می‌شود. این تاریخ با رؤیت هلال یا اعلام رسمی مناسبت‌های ایران یکی نیست.</p>
+<div class="lunar-today"><strong id="toolLunarToday">—</strong><span id="toolLunarWeekday">—</span></div>
+<div class="tool-result" id="toolLunarForDate">با تبدیل هر تاریخ، معادل قمری آن نیز نمایش داده می‌شود.</div>
+</article>
+<article class="tool-card">
+<span class="tool-kicker">۰۳ · فاصله</span><h2>فاصله دو تاریخ</h2><p>تعداد روزهای بین دو تاریخ شمسی را محاسبه کنید.</p>
+<div class="tool-form two-cols"><label>تاریخ اول<input id="diffStart" inputmode="numeric" placeholder="۱۴۰۵/۰۱/۰۱"></label><label>تاریخ دوم<input id="diffEnd" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۰"></label></div>
+<button class="add-btn" id="diffBtn">محاسبه فاصله</button><div class="tool-result" id="diffResult">نتیجه اینجا نمایش داده می‌شود.</div>
+</article>
+<article class="tool-card">
+<span class="tool-kicker">۰۴ · سن</span><h2>محاسبه سن</h2><p>تاریخ تولد شمسی را وارد کنید تا سن بر اساس تاریخ امروز محاسبه شود.</p>
+<div class="tool-form"><label>تاریخ تولد<input id="birthDate" inputmode="numeric" placeholder="۱۳۷۵/۰۵/۲۰"></label></div>
+<button class="add-btn" id="ageBtn">محاسبه سن</button><div class="tool-result" id="ageResult">نتیجه اینجا نمایش داده می‌شود.</div>
+</article>
+</div>
+<div class="tools-note"><b>مرحله بعدی بستر</b><span>ماژول زمان شرعی و اوقات نماز می‌تواند به‌صورت شهرمحور اضافه شود؛ برای این بخش باید منبع محاسباتی/داده‌ای قابل اتکا و قابل تنظیم انتخاب شود.</span></div>
+</section>
+</main>
+<footer><span>بستر تقویم و رویداد</span><a href="index.html">بازگشت به تقویم</a></footer>
+<script src="assets/js/tools.js"></script>
+</body></html>
