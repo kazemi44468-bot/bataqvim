@@ -9,7 +9,7 @@
 <body>
 <header class="topbar">
   <a class="brand" href="./"><span class="brand-logo"><img src="assets/images/logo.png" alt="لوگوی تقویم"></span><span><b>تقویم</b><small>بستر تقویم و رویداد</small></span></a>
-  <nav><a href="#calendar">تقویم</a><a href="#agenda">برنامه</a><a href="#year">سالنامه</a><a href="#projects">تقویم‌های اختصاصی</a></nav>
+  <nav><a href="#calendar">تقویم</a><a href="#allEvents">همه رویدادها</a><a href="#agenda">برنامه</a><a href="#year">سالنامه</a><a href="#projects">تقویم‌های اختصاصی</a></nav>
   <div class="top-actions"><button id="todayBtn" class="today" type="button">امروز</button><button id="addTop" class="add-btn" type="button">＋ رویداد</button></div>
 </header>
 <main>
@@ -39,7 +39,22 @@
 <section class="day-page" id="dayPage" hidden>
   <div class="day-page-head"><div><span class="eyebrow">DAILY PAGE</span><h2 id="dayPageTitle">صفحه روز</h2><p id="dayPageMeta"></p></div><button id="backCalendar" class="outline" type="button">بازگشت به تقویم</button></div>
   <div class="day-page-grid"><article class="day-main-card"><div class="day-symbol">روز</div><div id="dayPageEvents"></div></article><aside class="day-info-card"><b>رویداد جدید</b><p>برای این روز رویداد، جلسه، یادآوری یا نقطه عطف ثبت کنید.</p><button id="dayAddBtn" class="add-btn" type="button">＋ افزودن رویداد</button></aside></div>
-</section><section class="quick-stats" id="agenda"><div><b id="eventCount">۰</b><span>رویداد ثبت‌شده</span></div><div><b>۳</b><span>تقویم فعال نمونه</span></div><div><b>شمسی</b><span>تقویم پایه</span></div><div><b>روز · هفته · ماه · سال</b><span>نماهای تقویم</span></div></section>
+</section>
+<section class="section all-events-page" id="allEvents">
+  <div class="section-title"><span>رویدادها</span><div><small>فهرست کامل</small><h2 class="calligraphy">همه رویدادها</h2></div></div>
+  <div class="all-events-toolbar">
+    <p>همه مناسبت‌ها و رویدادهای ثبت‌شده، به ترتیب تاریخ در این فهرست نمایش داده می‌شوند.</p>
+    <select id="allEventsFilter" aria-label="فیلتر رویدادها">
+      <option value="all">همه دسته‌ها</option>
+      <option value="national">ملی</option><option value="religious">مذهبی</option>
+      <option value="iranian">ایرانی و فرهنگی</option><option value="historical">تاریخی</option>
+      <option value="international">بین‌المللی</option><option value="special">تخصصی و ویژه</option>
+      <option value="personal">شخصی</option><option value="public">عمومی</option><option value="project">پروژه</option>
+    </select>
+  </div>
+  <div id="allEventsList" class="all-events-list"></div>
+</section>
+<section class="quick-stats" id="agenda"><div><b id="eventCount">۰</b><span>رویداد ثبت‌شده</span></div><div><b>۳</b><span>تقویم فعال نمونه</span></div><div><b>شمسی</b><span>تقویم پایه</span></div><div><b>روز · هفته · ماه · سال</b><span>نماهای تقویم</span></div></section>
 <section class="section" id="year"><div class="section-title"><span>۰۱</span><div><small>سالنامه</small><h2 class="calligraphy">سال را یکجا ببینید</h2></div></div><div class="year-info"><div><b>مناسبت‌ها</b><p>تقویم می‌تواند مناسبت‌های ملی، مذهبی، جهانی و رویدادهای اختصاصی هر پروژه را کنار برنامه شخصی نمایش دهد.</p></div><div><b>نقاط عطف</b><p>موعدها، جلسات، انتشارها و مراحل پروژه روی یک محور زمانی مشترک قرار می‌گیرند.</p></div><div><b>یادآوری</b><p>رویدادهای تکرارشونده و یادآوری‌های چندمرحله‌ای، بخش بعدی هسته برنامه‌ریزی هستند.</p></div></div></section>
 <section class="section" id="projects"><div class="section-title"><span>۰۲</span><div><small>معماری محصول</small><h2 class="calligraphy">هر پروژه، تقویم خودش را دارد</h2></div></div><div class="project-layout"><div class="project-card"><span>PROJECT CALENDAR</span><h3>تقویم اختصاصی پروژه</h3><p>هر پروژه می‌تواند رویدادها، جلسات، مراحل، مهلت‌ها، انتشارها و نقاط عطف خود را در یک تقویم مستقل مدیریت کند؛ بدون ساختن دوباره هسته تقویم.</p><div class="chips"><i>رویداد</i><i>مرحله</i><i>موعد</i><i>جلسه</i><i>یادآوری</i></div></div><div class="project-list"><div>تقویم سازمانی <b>→</b></div><div>تقویم آموزشی <b>→</b></div><div>تقویم فرهنگی <b>→</b></div><div>تقویم شهدا <b>→</b></div></div></div></section>
 </main>
