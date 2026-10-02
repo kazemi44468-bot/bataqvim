@@ -40,4 +40,4 @@
 <script>
 (()=>{const f=document.getElementById('contactForm'),s=document.getElementById('contactStatus');f.addEventListener('submit',e=>{e.preventDefault();const item={name:contactName.value,email:contactEmail.value,topic:contactTopic.value,org:contactOrg.value,message:contactMessage.value,createdAt:new Date().toISOString()};const list=JSON.parse(localStorage.getItem('bataqvim-contact')||'[]');list.push(item);localStorage.setItem('bataqvim-contact',JSON.stringify(list));s.textContent='درخواست در این مرورگر ثبت شد.';s.className='contact-success';f.reset()})})();
 </script>
-</body></html>
+<script src="assets/js/site.js?v=20261002-1"></script>\n</body></html>
