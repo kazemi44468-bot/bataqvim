@@ -57,7 +57,7 @@ function worldClocks(){
   setInterval(update,1000);
 }
 function loadEvents(){
-  let ev=[].concat(window.OFFICIAL_EVENTS_1404||[],window.OFFICIAL_EVENTS_1405||[],window.OFFICIAL_EVENTS_1406||[]);
+  let ev=[].concat(window.BATAQVIM_RECURRING_EVENTS||[],window.OFFICIAL_EVENTS_1404||[],window.OFFICIAL_EVENTS_1405||[],window.OFFICIAL_EVENTS_1406||[]);
   try{ev=ev.concat(JSON.parse(localStorage.getItem("bataqvim-events")||"[]"))}catch(e){}
   const n=new Date(),j=g2j(n.getFullYear(),n.getMonth()+1,n.getDate()),year=String(j[0]),month=String(j[1]).padStart(2,"0"),day=String(j[2]).padStart(2,"0"),key=year+"/"+month+"/"+day;
   const today=ev.filter(e=>e.date===key).slice(0,5),todayBox=$("#todayEvents");
