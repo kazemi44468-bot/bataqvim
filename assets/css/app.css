@@ -180,3 +180,26 @@ footer{font-size:11px;background:#f4f9f7;border-color:#d7e3df}
 @media(max-width:390px){
   .title-area h1{font-size:29px}.day-cell{min-height:64px}
 }
+
+/* CALENDAR DATE NAVIGATION + DAILY PAGE */
+.date-selector{display:flex;align-items:end;gap:8px;flex-wrap:wrap;margin:0 0 18px;padding:12px 14px;background:linear-gradient(135deg,#edf8f5,#f6faf9);border:1px solid #cfe2dd;border-radius:15px}
+.date-selector label{display:flex;flex-direction:column;gap:4px;font-size:11px;color:#496763;font-weight:600}
+.date-selector select{min-width:105px;height:40px;padding:6px 10px;border:1px solid #c7ddd8;border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none}
+.date-selector select:focus{border-color:var(--turq);box-shadow:0 0 0 3px rgba(21,154,152,.1)}
+.date-open{height:40px;border:0;border-radius:9px;padding:0 16px;background:var(--turq-dark);color:#fff;font:inherit;font-size:12px;cursor:pointer}
+.day-page{max-width:1200px;margin:0 auto;padding:20px 5% 80px}
+.day-page[hidden]{display:none}
+.day-page-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px;padding:25px 28px;background:linear-gradient(135deg,#e8f5f2,#f8fbfa);border:1px solid #cfe1dc;border-radius:22px;position:relative;overflow:hidden}
+.day-page-head:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(21,154,152,.13);border-radius:50%;left:-100px;top:-140px}
+.day-page-head h2{font-size:31px;margin:4px 0;color:var(--ink)}
+.day-page-head p{margin:0;color:#637572;font-size:13px}
+.day-page-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:16px}
+.day-main-card,.day-info-card{background:#fff;border:1px solid #d7e3df;border-radius:20px;padding:22px;box-shadow:0 14px 38px rgba(28,69,66,.06)}
+.day-symbol{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:var(--turq-soft);color:var(--turq-dark);font-size:12px;margin-bottom:16px}
+.day-event{padding:15px 16px;margin-bottom:10px;border:1px solid #dbe6e3;border-right:4px solid var(--turq);border-radius:12px;background:#fbfdfc}
+.day-event b{display:block;font-size:15px;margin-bottom:4px}.day-event span{display:block;color:#5d716e;font-size:11px}.day-event p{font-size:12px;color:#687875;line-height:2;margin:7px 0 0}
+.day-info-card b{font-size:16px}.day-info-card p{font-size:12px;color:#687875;line-height:2;margin:8px 0 18px}
+@media(max-width:700px){
+ .date-selector{display:grid;grid-template-columns:1fr 1fr;align-items:end}.date-selector label{min-width:0}.date-selector select{min-width:0;width:100%}.date-open{grid-column:1/-1}
+ .day-page{padding:10px 3% 55px}.day-page-head{padding:20px;align-items:flex-start;flex-direction:column}.day-page-head h2{font-size:26px}.day-page-grid{grid-template-columns:1fr}
+}
