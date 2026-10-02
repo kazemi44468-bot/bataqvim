@@ -4,7 +4,7 @@ function g2j(gy,gm,gd){const gdm=[31,28,31,30,31,30,31,31,30,31,30,31];let gy2=g
 const months=["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"],w=["شنبه","یکشنبه","دوشنبه","سه‌شنبه","چهارشنبه","پنجشنبه","جمعه"];
 function renderNow(){const n=new Date(),j=g2j(n.getFullYear(),n.getMonth()+1,n.getDate());$("#todayJalali").textContent=fa(j[0]+"/"+String(j[1]).padStart(2,"0")+"/"+String(j[2]).padStart(2,"0"));$("#todayWeekday").textContent=w[(n.getDay()+1)%7];$("#todayGregorian").textContent=fa(n.getFullYear()+"/"+String(n.getMonth()+1).padStart(2,"0")+"/"+String(n.getDate()).padStart(2,"0"));try{$("#todayLunar").textContent=new Intl.DateTimeFormat("fa-IR-u-ca-islamic-umalqura",{year:"numeric",month:"long",day:"numeric"}).format(n)}catch{$("#todayLunar").textContent="—"}const h=n.getHours(),m=n.getMinutes(),s=n.getSeconds();$("#liveClock").textContent=fa([h,m,s].map(x=>String(x).padStart(2,"0")).join(":"));document.querySelector(".hour").style.transform="translateX(-50%) rotate("+(h%12*30+m*.5)+"deg)";document.querySelector(".minute").style.transform="translateX(-50%) rotate("+(m*6+s*.1)+"deg)";document.querySelector(".second").style.transform="translateX(-50%) rotate("+(s*6)+"deg")}
 renderNow();setInterval(renderNow,1000);
-async function prayer(){
+async async function prayer(){
   const city=$("#prayerCity")?.value||"Tehran", n=new Date(), day=String(n.getDate()).padStart(2,"0"), month=String(n.getMonth()+1).padStart(2,"0"), year=n.getFullYear(), box=$("#prayerTimes");
   if(!box)return;
   box.innerHTML='<div class="prayer-loading">در حال دریافت…</div>';
