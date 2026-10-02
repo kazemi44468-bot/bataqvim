@@ -445,3 +445,18 @@ html,body{max-width:100%;overflow-x:hidden}
 @media(max-width:1000px){.home-hero{grid-template-columns:1fr}.today-dashboard{grid-template-columns:1fr}.hero-date-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.home-new{padding:14px 3% 0}.calendar-top{align-items:flex-start;flex-direction:column}.calendar-actions{width:100%;justify-content:space-between}.calendar-nav-title{align-items:flex-start;flex-direction:column}.home-calendar-body{padding:0 10px 10px}.home-calendar-body .month-grid{min-width:680px}.hero-date,.hero-tools,.calendar-card,.selected-day-card,.home-filters{border-radius:15px}.hero-date,.hero-tools{padding:17px}.hero-date h1{font-size:25px}.hero-date-grid{gap:6px}.hero-date-grid span{padding:8px 6px}.today-dashboard{margin-top:12px}.home-new>footer{margin-left:-3%;margin-right:-3%;padding:18px 3%}}
 @media(max-width:430px){.hero-date-grid{grid-template-columns:1fr 1fr}.quick-date{grid-template-columns:1fr}.selected-day-head{align-items:flex-start;flex-direction:column}.day-add{width:100%}}
+
+/* TOOLS EXTENSION — prayer, related dates, countdown, today and qibla */
+.tools-grid-expanded{margin-top:18px}
+.tool-card-wide{grid-column:1/-1}
+.tool-card select,.tool-card input{width:100%}
+.tool-inline-value{display:flex;align-items:center;min-height:46px;padding:10px 13px;border:1px solid var(--line,#d9e7e2);border-radius:12px;background:#fbfdfc;font-size:14px;color:var(--ink,#173f3c)}
+.tool-card .prayer-grid{margin-top:14px}
+.tool-card .prayer-source{display:block;margin-top:12px;line-height:1.8;color:var(--muted,#7b8a86)}
+.today-tool{display:grid;gap:6px;padding:18px;margin:14px 0;border:1px solid var(--line,#d9e7e2);border-radius:14px;background:linear-gradient(180deg,#fbfdfc,#f6faf8)}
+.today-tool b{font-size:25px;color:var(--ink,#173f3c)}
+.today-tool span{font-weight:700;color:var(--brand,#147f79)}
+.today-tool small{line-height:1.9;color:var(--muted,#7b8a86)}
+.qibla-result{display:grid;gap:6px;margin-top:14px;padding:15px;border:1px solid var(--line,#d9e7e2);border-radius:14px;background:#fbfdfc;color:var(--ink-2,#294d49);line-height:1.9}
+.qibla-result strong{font-size:17px}.qibla-result span{color:var(--muted,#7b8a86)}
+@media(max-width:760px){.tool-card-wide{grid-column:auto}.tools-grid-expanded{margin-top:12px}}
